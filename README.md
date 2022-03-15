@@ -1,12 +1,14 @@
-Vérifier régulierement que le code s'exécute (make)
+## Règles pour bonne organisaton:
 
-git pull toujours avant de modifier.
+1. Vérifier régulierement que le code s'exécute **(make)**
 
-git add [uniquement les fichiers modifiées].
+2. **git pull** toujours avant de modifier.
 
-commit avec message claire en anglais, par ex:
+3. **git add** [uniquement les fichiers modifiées].
 
-adding Class.cpp/h: après creation d'une classe
+4. **commit** avec message claire en anglais, par ex:
 
-updating Class.cpp/h: après modification d'une classe
+- adding Class.cpp/h: après creation d'une classe
+
+- updating Class.cpp/h: après modification d'une classe
 
