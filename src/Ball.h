@@ -1,4 +1,9 @@
 #ifndef BALL_H
 #define BALL_H
 
-#endif 
+class Ball
+{
+private:
+
+};
+#endif
