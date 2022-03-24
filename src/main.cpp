@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Ball.h"
 #include "Paddle.h"
-// #include "Vec2D.h"
+#include "Vec2D.h"
 #include <SDL2/SDL.h>
 
 const int WINDOW_WIDTH = 1280;
@@ -9,7 +9,6 @@ const int WINDOW_HEIGHT = 720;
 
 int main()
 {
-    
     // Initialize SDL components
     SDL_Init(SDL_INIT_VIDEO);
 

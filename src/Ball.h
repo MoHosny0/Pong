@@ -5,5 +5,7 @@ class Ball
 {
 private:
 
+public: 
+
 };
 #endif
