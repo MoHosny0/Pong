@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Ball.h"
 #include "Paddle.h"
+#include "Terrain.h"
+#include "txt.h"
 // #include "Vec2D.h"
 #include <SDL2/SDL.h>
 
@@ -10,7 +12,7 @@ const int WINDOW_HEIGHT = 720;
 int main()
 {
     
-    // Initialize SDL components
+    /*// Initialize SDL components
     SDL_Init(SDL_INIT_VIDEO);
 
     SDL_Window *window = SDL_CreateWindow("Pong", 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
@@ -55,7 +57,13 @@ int main()
     // Cleanup
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
-    SDL_Quit();
+    SDL_Quit();*/
+
+    Terrain terr;
+    txtClear();
+    affiche(terr);
+
+
 
     return 0;
 }
