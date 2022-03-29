@@ -5,7 +5,7 @@
 #include "Terrain.h"
 #include "Ball.h"
 
-class jeu
+class Jeu
 {
 private:
     Terrain ter;
@@ -13,7 +13,7 @@ private:
     Paddle p;
 
 public:
-    jeu();
+    Jeu();
 };
 
 #endif
