@@ -1,6 +1,6 @@
 SDL = -lSDL2
-_OBJ = main.o Vec2D.o txt.o Terrain.o
-OBJ = $(patsubst %,obj/%,$(_OBJ))
+_OBJ = Vec2D.o Terrain.o Ball.o
+OBJ = $(patsubst %,obj/core/%,$(_OBJ))
 
 GPP_EX = g++ -Wall -o
 GPP_O = g++ -Wall -c
@@ -30,7 +30,7 @@ all: bin/app
 bin/app: $(OBJ)
 	${GPP_EX} bin/app $^ $(LIBRARY_PATHS_SDL) $(SDL)
 
-obj/%.o: src/%.cpp
+obj/core/%.o: src/core/%.cpp
 	${GPP_O} -o $@ $< $(INCLUDE_PATHS_SDL) 
 
 clean:
