@@ -3,13 +3,27 @@
 
 Terrain::Terrain()
 {
-    dimx = 30;
-    dimy = 100;
-    for (int x = 0; x < dimx; x++)
+    dimx = 80;
+    dimy = 30;
+    for (int y = 0; y < dimy; y++)
     {
-        for (int y = 0; y < dimy; y++)
+        for (int x = 0; x < dimx; x++)
         {
-            ter[x][y] = '.';
+            if (y == 0 || y == dimy - 1) 
+            {
+                ter[x][y] = '_';
+            }
+            else if ((x == 0 && y != 0 && y != dimy-1) || (x == dimx-1 && y != 0 && y != dimy-1) )
+            {
+                ter[x][y] = '|';
+            }
+            else 
+            {
+                ter[x][y] = '.';
+            }
+
+            // ter[x][y] = '*';
+            
         }
     }
 }
