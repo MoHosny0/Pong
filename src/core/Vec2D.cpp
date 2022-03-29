@@ -18,3 +18,6 @@ Vec2D Vec2D::operator*(float k)
 {
     return Vec2D(x * k, y * k);
 }
+
+float Vec2D::getX() const { return x; }
+float Vec2D::getY() const { return y; }

@@ -11,11 +11,11 @@ private:
 
 public:
     Ball();
-    Ball(const Vec2D &pos, const float radius);
-    const Vec2D &GetPosition() const;
-    const Vec2D &GetVelocity() const;
-    const float &GetRadius() const;
-    void SetPosition(const Vec2D &NewPosition);
-    void SetVelocity(const Vec2D &NewVelocity);
+    Ball(const Vec2D &InitialPosition, const float BallRadius);
+    const Vec2D &getPosition() const;
+    const Vec2D &getVelocity() const;
+    const float &getRadius() const;
+    void setPosition(const Vec2D &NewPosition);
+    void setVelocity(const Vec2D &NewVelocity);
 };
 #endif

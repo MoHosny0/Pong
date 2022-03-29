@@ -8,15 +8,16 @@
 class Jeu
 {
 private:
-    Terrain ter;
-    Ball b;
-    Paddle player1, player2;
-    int player1_score, player2_score;
+    Terrain terrain;
+    Ball ball;
+    Paddle playerOne, playerTwo;
+    int playerOneScore, playerTwoScore;
 
 public:
     Jeu();
 
     Terrain &getTerrain();
+    Ball &getBall();
     Paddle &getPaddle1();
     Paddle &getPaddle2();
 

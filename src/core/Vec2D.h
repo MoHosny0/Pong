@@ -12,5 +12,7 @@ public:
     Vec2D operator+(Vec2D const &v);
     Vec2D &operator+=(Vec2D const &v);
     Vec2D operator*(float k);
+    float getX() const;
+    float getY() const;
 };
 #endif

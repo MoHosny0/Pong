@@ -1,14 +1,10 @@
 #ifndef SDLJEU_H
 #define SDLJEU_H
-
 #include "Jeu.h"
 #include <SDL2/SDL.h>
 
-
-
 class sdlJeu
 {
-
 private:
     Jeu jeu;
     SDL_Window *window;

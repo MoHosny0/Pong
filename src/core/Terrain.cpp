@@ -9,28 +9,25 @@ Terrain::Terrain()
     {
         for (int x = 0; x < dimx; x++)
         {
-            if (y == 0 || y == dimy - 1) 
+            if (y == 0 || y == dimy - 1)
             {
                 ter[x][y] = '_';
             }
-            else if ((x == 0 && y != 0 && y != dimy-1) || (x == dimx-1 && y != 0 && y != dimy-1) )
+            else if ((x == 0 && y != 0 && y != dimy - 1) || (x == dimx - 1 && y != 0 && y != dimy - 1))
             {
                 ter[x][y] = '|';
             }
-            else 
+            else
             {
                 ter[x][y] = '.';
             }
-
-            
-            
         }
     }
 }
 
-bool Terrain::posValide(const int x,const int y) const
+bool Terrain::posEstValide(const int x, const int y) const
 {
-    return (x >= 0 && x < dimx && y >= 0 && y < dimy && (ter[x][y] != '|' || ter[x][y] != '_' ));
+    return (x >= 0 && x < dimx && y >= 0 && y < dimy && (ter[x][y] != '|' || ter[x][y] != '_'));
 }
 
 int Terrain::getDimX() const

@@ -21,7 +21,7 @@ private:
 public:
     Paddle();
     Paddle(const Rectangle startingPosition);
-    const Rectangle &GetPositionSize() const;
+    const Rectangle &getPositionSize() const;
     void setPositionSize(const Rectangle newPositionSize);
     void setPosition(const Vec2D newPosition);
     void haut(const Terrain &t);

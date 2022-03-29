@@ -18,7 +18,7 @@ public :
     */
     Terrain();
 
-    bool posValide(const int x,const int y) const;
+    bool posEstValide(const int x,const int y) const;
 
 
     /**
