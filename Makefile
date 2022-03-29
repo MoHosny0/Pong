@@ -34,4 +34,4 @@ obj/core/%.o: src/core/%.cpp
 	${GPP_O} -o $@ $< $(INCLUDE_PATHS_SDL)
 
 clean:
-	rm -f obj/* bin/*
+	rm -f obj/core/* bin/*
