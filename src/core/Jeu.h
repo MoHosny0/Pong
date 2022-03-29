@@ -10,19 +10,20 @@ class Jeu
 private:
     Terrain ter;
     Ball b;
-    Paddle p;
-    int player1_score, player2_score;
     Paddle player1, player2;
+    int player1_score, player2_score;
 
 public:
     Jeu();
 
     Terrain &getTerrain();
-    Paddle &getPaddle();
+    Paddle &getPaddle1();
+    Paddle &getPaddle2();
 
     const Terrain &getConstTerrain() const;
     const Ball &getConstBall() const;
-    const Paddle &getConstPaddle() const;
+    const Paddle &getConstPaddle1() const;
+    const Paddle &getConstPaddle2() const;
 };
 
 #endif
