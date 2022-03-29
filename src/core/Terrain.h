@@ -17,6 +17,10 @@ public :
     Le constructeur remplit dimx et dimy
     */
     Terrain();
+
+    bool posValide(const int x,const int y) const;
+
+
     /**
     @brief Renvoie la largeur du terrain
     */

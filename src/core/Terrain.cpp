@@ -22,10 +22,15 @@ Terrain::Terrain()
                 ter[x][y] = '.';
             }
 
-            // ter[x][y] = '*';
+            
             
         }
     }
+}
+
+bool Terrain::posValide(const int x,const int y) const
+{
+    return (x >= 0 && x < dimx && y >= 0 && y < dimy && (ter[x][y] != '|' || ter[x][y] != '_' ));
 }
 
 int Terrain::getDimX() const
