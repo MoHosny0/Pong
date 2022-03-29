@@ -1,8 +1,6 @@
 #ifndef PADDLE_H
 #define PADDLE_H
 
-#endif
-
 struct Rectangle
 {
     float x;
@@ -24,3 +22,5 @@ public:
     void setPositionSize(const Rectangle newPositionSize);
     void setPosition(const Vec2D newPosition);
 };
+
+#endif
