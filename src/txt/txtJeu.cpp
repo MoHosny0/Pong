@@ -1,4 +1,3 @@
-
 #include "txt.h"
 #include "Terrain.h"
 #include <stdlib.h>
@@ -14,12 +13,20 @@ void affiche(Terrain terr)
 {
     int dimx = terr.getDimX();
     int dimy = terr.getDimY();
-    for(int x = 0; x < dimx; x++)
+    for (int x = 0; x < dimx; x++)
     {
-        for(int y = 0; y < dimy; y++)
+        for (int y = 0; y < dimy; y++)
         {
-            cout << terr.getXY(x,y);
+            cout << terr.getXY(x, y);
         }
         cout << endl;
     }
+}
+void boucle(Terrain terr)
+{
+    bool ok = true;
+    do
+    {
+
+    } while (ok);
 }

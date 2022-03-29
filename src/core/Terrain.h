@@ -8,7 +8,7 @@ class Terrain {
 private : 
     int dimx;
     int dimy;
-    char ter [100][100];
+    char ter [100][30];
 
 public : 
 

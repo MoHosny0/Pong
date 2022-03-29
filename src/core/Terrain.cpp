@@ -3,13 +3,13 @@
 
 Terrain::Terrain()
 {
-    dimx = 100;
+    dimx = 30;
     dimy = 100;
-    for(int i = 0; i <dimx; i++)
+    for (int x = 0; x < dimx; x++)
     {
-        for(int j = 0; j <dimy; j++)
+        for (int y = 0; y < dimy; y++)
         {
-            ter[j][i] = '.';
+            ter[x][y] = '.';
         }
     }
 }
@@ -24,10 +24,11 @@ int Terrain::getDimY() const
     return dimy;
 }
 
-char Terrain::getXY (const int x, const int y) const {
-	assert(x>=0);
-	assert(y>=0);
-	assert(x<dimx);
-	assert(y<dimy);
-	return ter[x][y];
+char Terrain::getXY(const int x, const int y) const
+{
+    assert(x >= 0);
+    assert(y >= 0);
+    assert(x < dimx);
+    assert(y < dimy);
+    return ter[x][y];
 }
