@@ -1,19 +1,22 @@
 #include "Paddle.h"
 
-Rectangle::Paddle(const Rectangle startingPosition)
+Paddle::Paddle(const Rectangle startingPosition)
 {
     rect = startingPosition;
 }
-const Rectangle &Rectangle::GetPositionSize() const
+const Rectangle &Paddle::GetPositionSize() const
 {
     return rect;
 }
-Rectangle::SetPositionSize(const Rectangle newPositionSize)
+Paddle::SetPositionSize(const Rectangle newPositionSize)
 {
     rect = newPositionSize;
 }
-Rectangle::setPosition(const Vec2D newPosition)
+Paddle::setPosition(const Vec2D newPosition)
 {
     rect.x = newPosition.x;
     rect.y = newPosition.y;
+}
+Paddle::haut(const Terrain & t) {
+    if (t.estPositionPersoValide(x, y)) y++;
 }
