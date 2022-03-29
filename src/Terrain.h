@@ -20,14 +20,14 @@ public :
     /**
     @brief Renvoie la largeur du terrain
     */
-    int getDimX () const;
+    int getDimX() const;
 
     /**
     @brief Renvoie la hauteur du terrain
     */
-    int getDimY () const;
+    int getDimY() const;
 
-    char getXY (const int x, const int y) const;
+    char getXY(const int x, const int y) const;
 
 };
 

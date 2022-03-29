@@ -1,4 +1,5 @@
 #include "Terrain.h"
+#include <cassert>
 
 Terrain::Terrain()
 {
@@ -8,17 +9,17 @@ Terrain::Terrain()
     {
         for(int j = 0; j <dimy; j++)
         {
-            ter[y][x] == ".";
+            ter[j][i] = '.';
         }
     }
 }
 
-Terrain::getDimX()
+int Terrain::getDimX() const
 {
     return dimx;
 }
 
-Terrain::getDimY()
+int Terrain::getDimY() const
 {
     return dimy;
 }
@@ -26,7 +27,7 @@ Terrain::getDimY()
 char Terrain::getXY (const int x, const int y) const {
 	assert(x>=0);
 	assert(y>=0);
-	assert(x<m_dimx);
-	assert(y<m_dimy);
-	return m_ter[x][y];
+	assert(x<dimx);
+	assert(y<dimy);
+	return ter[x][y];
 }
