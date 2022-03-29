@@ -6,7 +6,7 @@ Ball::Ball(const Vec2D &InitialPosition, const float BallRadius)
     radius = BallRadius;
     velocity(0, 0);
 }
-const Vec2D &Ball : GetPosition() const { return position; }
+const Vec2D &Ball::GetPosition() const { return position; }
 const Vec2D &Ball::GetVelocity() const { return velocity; }
 const float &Ball::GetRadius() const { return radius; }
 void Ball::SetPosition(const Vec2D &NewPosition)
