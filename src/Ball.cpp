@@ -17,5 +17,3 @@ void Ball::SetVelocity(const Vec2D &NewVelocity)
 {
     velocity = NewVelocity;
 }
-}
-;
