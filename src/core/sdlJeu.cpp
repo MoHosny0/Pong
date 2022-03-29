@@ -23,14 +23,15 @@ sdlJeu::sdlJeu() : jeu()
         exit(1);
     }
 
-    int dimx, dimy;
-    dimx = jeu.getConstTerrain().getDimX();
-    dimy = jeu.getConstTerrain().getDimY();
-    dimx = dimx * TAILLE_SPRITE;
-    dimy = dimy * TAILLE_SPRITE;
+    WINDOW_WIDTH = jeu.getConstTerrain().getDimX();
+    WINDOW_HEIGHT = jeu.getConstTerrain().getDimY();
+    WINDOW_WIDTH *= TAILLE_SPRITE;
+    WINDOW_HEIGHT *= TAILLE_SPRITE;
+
+    cout << "Window is created with dimensions " << WINDOW_WIDTH << " and " << WINDOW_HEIGHT << endl;
 
     // Creation de la fenetre
-    window = SDL_CreateWindow("Pong", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, dimx, dimy, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+    window = SDL_CreateWindow("Pong", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
     if (window == NULL)
     {
         cout << "Erreur lors de la creation de la fenetre : " << SDL_GetError() << endl;
@@ -51,13 +52,25 @@ sdlJeu::~sdlJeu()
 void sdlJeu::sdlAff()
 {
     // Remplir l'ecran de blanc
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+
     int x, y;
-    const Terrain &ter = jeu.getConstTerrain();
-    const Paddle &Paddle1 = jeu.getConstPaddle1();
-    const Paddle &Paddle2 = jeu.getConstPaddle2();
+    const Terrain &terrain = jeu.getConstTerrain();
+    const Ball &ball = jeu.getConstBall();
+    const Paddle &paddle1 = jeu.getConstPaddle1();
+    const Paddle &paddle2 = jeu.getConstPaddle2();
+
+    // Draw the net
+    for (int y = 0; y < WINDOW_HEIGHT; ++y)
+    {
+        if (y % 20)
+        {
+            SDL_RenderDrawPoint(renderer, WINDOW_WIDTH, y);
+        }
+    }
 }
 
 void sdlJeu::sdlBoucle()
@@ -86,10 +99,9 @@ void sdlJeu::sdlBoucle()
                 }
             }
         }
+        // on affiche le jeu sur le buffer cach�
+        sdlAff();
+        // on permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans la boucle)
+        SDL_RenderPresent(renderer);
     }
-
-    // on affiche le jeu sur le buffer cach�
-    sdlAff();
-    // on permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans la boucle)
-    SDL_RenderPresent(renderer);
 }
