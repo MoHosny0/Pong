@@ -1,6 +1,9 @@
 #ifndef PADDLE_H
 #define PADDLE_H
 
+#include "Vec2D.h"
+#include "Terrain.h"
+
 struct Rectangle
 {
     float x;
@@ -14,7 +17,6 @@ class Paddle
 
 private:
     Rectangle rect;
-    
 
 public:
     Paddle();
@@ -22,8 +24,8 @@ public:
     const Rectangle &GetPositionSize() const;
     void setPositionSize(const Rectangle newPositionSize);
     void setPosition(const Vec2D newPosition);
-    void haut (const Terrain &t);
-    void bas (const Terrain &t);
+    void haut(const Terrain &t);
+    void bas(const Terrain &t);
 };
 
 #endif

@@ -10,6 +10,7 @@ private:
     float radius;
 
 public:
+    Ball();
     Ball(const Vec2D &pos, const float radius);
     const Vec2D &GetPosition() const;
     const Vec2D &GetVelocity() const;

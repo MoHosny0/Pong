@@ -1,5 +1,5 @@
 SDL = -lSDL2
-_OBJ = main.o Vec2D.o Terrain.o Ball.o txtJeu.o
+_OBJ = main_sdl.o sdlJeu.o Jeu.o Vec2D.o Terrain.o Ball.o txtJeu.o
 OBJ = $(patsubst %,obj/core/%,$(_OBJ))
 
 GPP_EX = g++ -Wall -o
