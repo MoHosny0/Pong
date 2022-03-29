@@ -2,12 +2,12 @@
 #include "Ball.h"
 #include "Paddle.h"
 #include "Terrain.h"
-#include "txt.h"
+// #include "../txt/txtJeu.h"
 // #include "Vec2D.h"
 #include <SDL2/SDL.h>
 
-const int WINDOW_WIDTH = 1280;
-const int WINDOW_HEIGHT = 720;
+// const int WINDOW_WIDTH = 1280;
+// const int WINDOW_HEIGHT = 720;
 
 int main()
 {
@@ -59,9 +59,9 @@ int main()
     SDL_DestroyWindow(window);
     SDL_Quit();*/
 
-    Terrain terr;
-    txtClear();
-    affiche(terr);
+    // Terrain terr;
+    // txtClear();
+    // affiche(terr);
 
     return 0;
 }

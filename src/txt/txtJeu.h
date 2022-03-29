@@ -1,6 +1,6 @@
 #ifndef TXT_H
 #define TXT_H
-#include "Terrain.h"
+#include "../core/Terrain.h"
 
 
 void txtClear();

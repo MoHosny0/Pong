@@ -1,5 +1,5 @@
-#include "txt.h"
-#include "Terrain.h"
+#include "txtJeu.h"
+#include "../core/Terrain.h"
 #include <stdlib.h>
 #include <iostream>
 using namespace std;
