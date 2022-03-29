@@ -12,3 +12,7 @@
 
 - updating Class.cpp/h: après modification d'une classe
 
+## À faire:
+
+- Créer dossier **src/core** et **obj/core.**
+- Vérifier que tout compile.

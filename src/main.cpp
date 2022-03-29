@@ -11,7 +11,7 @@ const int WINDOW_HEIGHT = 720;
 
 int main()
 {
-    
+
     /*// Initialize SDL components
     SDL_Init(SDL_INIT_VIDEO);
 
@@ -62,8 +62,6 @@ int main()
     Terrain terr;
     txtClear();
     affiche(terr);
-
-
 
     return 0;
 }
