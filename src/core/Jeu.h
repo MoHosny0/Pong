@@ -10,8 +10,8 @@ class Jeu
 private:
     Terrain terrain;
     Ball ball;
-    Paddle playerOne, playerTwo;
-    int playerOneScore, playerTwoScore;
+    Paddle PlayerOne, PlayerTwo;
+    int PlayerOneScore, PlayerTwoScore;
 
 public:
     Jeu();

@@ -20,12 +20,12 @@ private:
 
 public:
     Paddle();
-    Paddle(const Rectangle startingPosition);
+    Paddle(const Rectangle StartingPosition);
     const Rectangle &getPositionSize() const;
-    void setPositionSize(const Rectangle newPositionSize);
-    void setPosition(const Vec2D newPosition);
-    void haut(const Terrain &t);
-    void bas(const Terrain &t);
+    void setPositionSize(const Rectangle NewPositionSize);
+    void setPosition(const Vec2D NewPosition);
+    void haut(const Terrain &T);
+    void bas(const Terrain &T);
 };
 
 #endif

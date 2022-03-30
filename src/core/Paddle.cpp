@@ -2,22 +2,22 @@
 
 Paddle::Paddle() {}
 
-Paddle::Paddle(const Rectangle startingPosition)
+Paddle::Paddle(const Rectangle StartingPosition)
 {
-    rect = startingPosition;
+    rect = StartingPosition;
 }
 const Rectangle &Paddle::getPositionSize() const
 {
     return rect;
 }
-void Paddle::setPositionSize(const Rectangle newPositionSize)
+void Paddle::setPositionSize(const Rectangle NewPositionSize)
 {
-    rect = newPositionSize;
+    rect = NewPositionSize;
 }
-void Paddle::setPosition(const Vec2D newPosition)
+void Paddle::setPosition(const Vec2D NewPosition)
 {
-    rect.x = newPosition.getX();
-    rect.y = newPosition.getY();
+    rect.x = NewPosition.getX();
+    rect.y = NewPosition.getY();
 }
 void Paddle::haut(const Terrain &t)
 {

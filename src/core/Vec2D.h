@@ -9,8 +9,8 @@ private:
 public:
     Vec2D() : x(0.0f), y(0.0f) {}
     Vec2D(float x, float y) : x(x), y(y) {}
-    Vec2D operator+(Vec2D const &v);
-    Vec2D &operator+=(Vec2D const &v);
+    Vec2D operator+(Vec2D const &V);
+    Vec2D &operator+=(Vec2D const &V);
     Vec2D operator*(float k);
     float getX() const;
     float getY() const;

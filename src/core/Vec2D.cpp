@@ -1,15 +1,15 @@
 #include "Vec2D.h"
 #include <iostream>
 
-Vec2D Vec2D::operator+(Vec2D const &v)
+Vec2D Vec2D::operator+(Vec2D const &V)
 {
-    return Vec2D(x + v.x, y + v.y);
+    return Vec2D(x + V.x, y + V.y);
 }
 
-Vec2D &Vec2D::operator+=(Vec2D const &v)
+Vec2D &Vec2D::operator+=(Vec2D const &V)
 {
-    x += v.x;
-    y += v.y;
+    x += V.x;
+    y += V.y;
 
     return *this;
 }
