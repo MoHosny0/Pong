@@ -1,7 +1,8 @@
 #include "Ball.h"
 
-Ball::Ball() { 
-    
+Ball::Ball()
+{
+    position = Vec2D(15.0f, 15.0f);
 }
 
 Ball::Ball(const Vec2D &InitialPosition, const float BallRadius)
@@ -20,4 +21,8 @@ void Ball::setPosition(const Vec2D &NewPosition)
 void Ball::setVelocity(const Vec2D &NewVelocity)
 {
     velocity = NewVelocity;
+}
+void Ball::setRadius(const float NewRadius)
+{
+    radius = NewRadius;
 }

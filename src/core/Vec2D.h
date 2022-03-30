@@ -14,5 +14,7 @@ public:
     Vec2D operator*(float k);
     float getX() const;
     float getY() const;
+    void setX(const float x_);
+    void setY(const float y_);
 };
 #endif

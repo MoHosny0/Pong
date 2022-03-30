@@ -21,3 +21,12 @@ Vec2D Vec2D::operator*(float k)
 
 float Vec2D::getX() const { return x; }
 float Vec2D::getY() const { return y; }
+
+void Vec2D::setX(const float x_)
+{
+    x = x_;
+}
+void Vec2D::setY(const float y_)
+{
+    y = y_;
+}

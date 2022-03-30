@@ -1,11 +1,12 @@
 #include <cassert>
 #include <time.h>
-#include "sdlJeu.h"
 #include <stdlib.h>
 #include <iostream>
+#include "sdlJeu.h"
 using namespace std;
 
 const int TAILLE_SPRITE = 32;
+const int BALL_SIZE = 8;
 
 float temps()
 {
@@ -28,7 +29,7 @@ sdlJeu::sdlJeu() : jeu()
     WINDOW_WIDTH *= TAILLE_SPRITE;
     WINDOW_HEIGHT *= TAILLE_SPRITE;
 
-    cout << "Window is created with dimensions " << WINDOW_WIDTH << " and " << WINDOW_HEIGHT << endl;
+    cout << "Window is created with dimensions " << WINDOW_WIDTH << "x" << WINDOW_HEIGHT << endl;
 
     // Creation de la fenetre
     window = SDL_CreateWindow("Pong", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
@@ -68,9 +69,17 @@ void sdlJeu::sdlAff()
     {
         if (y % 20)
         {
-            SDL_RenderDrawPoint(renderer, WINDOW_WIDTH, y);
+            SDL_RenderDrawPoint(renderer, WINDOW_WIDTH / 2, y);
         }
     }
+
+    // Draw the Ball
+    balle.x = ball.getPosition().getX() * TAILLE_SPRITE;
+    balle.y = ball.getPosition().getY() * TAILLE_SPRITE;
+    balle.w = BALL_SIZE;
+    balle.h = BALL_SIZE;
+    SDL_RenderFillRect(renderer, &balle);
+    cout << "Drawing ball at coordinates [" << balle.x << "," << balle.y << "]" << endl;
 }
 
 void sdlJeu::sdlBoucle()
