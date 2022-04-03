@@ -18,5 +18,7 @@ public:
     void setPosition(const Vec2D &NewPosition);
     void setVelocity(const Vec2D &NewVelocity);
     void setRadius(const float NewRadius);
+
+    void bougeAuto(const Terrain &t);
 };
 #endif

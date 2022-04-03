@@ -26,3 +26,8 @@ void Ball::setRadius(const float NewRadius)
 {
     radius = NewRadius;
 }
+
+void Fantome::bougeAuto(const Terrain &t)
+{
+    // TODO: mouvement de la balle et changement de direction en cas de collision avec les cote
+}
