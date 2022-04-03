@@ -5,6 +5,8 @@
 
 void txtClear();
 void affiche(Terrain terr);
-
+void boucle(Terrain terr);
+char getCh();
+int kbhit();
 
 #endif
