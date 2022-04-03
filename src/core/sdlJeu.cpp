@@ -96,7 +96,7 @@ void sdlJeu::sdlAff()
     player1.h = PADDLE_HEIGHT;
     SDL_RenderFillRect(renderer, &player1);
     cout << "Drawing Paddle 1 at coordinates [" << player1.x << "," << player1.y << "]" << endl;
-    player2.x = 80 - paddle2.getPosition().x;
+    player2.x = terrain.getDimX() - paddle2.getPosition().x;
     player2.y = paddle2.getPosition().y;
     player2.x *= TAILLE_SPRITE;
     player2.y *= TAILLE_SPRITE;
