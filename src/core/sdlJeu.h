@@ -18,6 +18,7 @@ public:
     void sdlAff();
     int WINDOW_HEIGHT, WINDOW_WIDTH;
     SDL_Rect balle;
+    SDL_Rect player1, player2;
 };
 
 #endif

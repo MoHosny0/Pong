@@ -8,8 +8,6 @@ struct Rectangle
 {
     float x;
     float y;
-    float width;
-    float height;
 };
 
 class Paddle
@@ -21,7 +19,7 @@ private:
 public:
     Paddle();
     Paddle(const Rectangle StartingPosition);
-    const Rectangle &getPositionSize() const;
+    const Rectangle &getPosition() const;
     void setPositionSize(const Rectangle NewPositionSize);
     void setPosition(const Vec2D NewPosition);
     void haut(const Terrain &T);

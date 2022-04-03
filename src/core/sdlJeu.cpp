@@ -7,6 +7,8 @@ using namespace std;
 
 const int TAILLE_SPRITE = 15;
 const int BALL_SIZE = 8;
+const int PADDLE_HEIGHT = 40;
+const int PADDLE_WIDTH = 8;
 
 float temps()
 {
@@ -84,6 +86,24 @@ void sdlJeu::sdlAff()
     balle.h = BALL_SIZE;
     SDL_RenderFillRect(renderer, &balle);
     cout << "Drawing ball at coordinates [" << balle.x << "," << balle.y << "]" << endl;
+
+    // Draw paddles
+    player1.x = paddle1.getPosition().x;
+    player1.y = paddle1.getPosition().y;
+    player1.x *= TAILLE_SPRITE;
+    player1.y *= TAILLE_SPRITE;
+    player1.w = PADDLE_WIDTH;
+    player1.h = PADDLE_HEIGHT;
+    SDL_RenderFillRect(renderer, &player1);
+    cout << "Drawing Paddle 1 at coordinates [" << player1.x << "," << player1.y << "]" << endl;
+    player2.x = 80 - paddle2.getPosition().x;
+    player2.y = paddle2.getPosition().y;
+    player2.x *= TAILLE_SPRITE;
+    player2.y *= TAILLE_SPRITE;
+    player2.w = PADDLE_WIDTH;
+    player2.h = PADDLE_HEIGHT;
+    SDL_RenderFillRect(renderer, &player2);
+    cout << "Drawing Paddle 2 at coordinates [" << player2.x << "," << player2.y << "]" << endl;
 }
 
 void sdlJeu::sdlBoucle()
@@ -98,6 +118,11 @@ void sdlJeu::sdlBoucle()
     {
 
         nt = SDL_GetTicks();
+        if (nt - t > 500)
+        {
+            jeu.actionsAutomatiques();
+            t = nt;
+        }
 
         // tant qu'il y a des evenements � traiter (cette boucle n'est pas bloquante)
         while (SDL_PollEvent(&events))
@@ -109,6 +134,23 @@ void sdlJeu::sdlBoucle()
                 if (events.key.keysym.sym == SDLK_ESCAPE)
                 {
                     quit = true;
+                }
+                switch (events.key.keysym.scancode)
+                {
+                case SDL_SCANCODE_Q:
+                    jeu.actionClavier('q');
+                    break;
+                case SDL_SCANCODE_A:
+                    jeu.actionClavier('a');
+                    break;
+                case SDL_SCANCODE_P:
+                    jeu.actionClavier('p');
+                    break;
+                case SDL_SCANCODE_L:
+                    jeu.actionClavier('l');
+                    break;
+                default:
+                    break;
                 }
             }
         }

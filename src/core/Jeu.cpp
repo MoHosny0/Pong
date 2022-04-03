@@ -18,7 +18,7 @@ void Jeu::actionsAutomatiques()
     ball.bougeAuto(terrain);
 }
 
-bool Jeu::actionClavier(const char touche)
+void Jeu::actionClavier(const char touche)
 {
     switch (touche)
     {

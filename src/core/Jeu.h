@@ -26,7 +26,7 @@ public:
     const Paddle &getConstPaddle1() const;
     const Paddle &getConstPaddle2() const;
 
-    bool actionClavier(const char touche);
+    void actionClavier(const char touche);
     void actionsAutomatiques();
 };
 
