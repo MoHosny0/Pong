@@ -2,7 +2,7 @@
 
 Ball::Ball()
 {
-    position = Vec2D(15.0f, 15.0f);
+    position = Vec2D(40, 15);
 }
 
 Ball::Ball(const Vec2D &InitialPosition, const float BallRadius)
@@ -27,7 +27,7 @@ void Ball::setRadius(const float NewRadius)
     radius = NewRadius;
 }
 
-void Fantome::bougeAuto(const Terrain &t)
+void Ball::bougeAuto(const Terrain &t)
 {
     // TODO: mouvement de la balle et changement de direction en cas de collision avec les cote
 }

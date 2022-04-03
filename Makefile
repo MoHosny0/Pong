@@ -32,10 +32,10 @@ all: bin/app
 bin/app: $(OBJ)
 	${GPP_EX} bin/app $^ $(LIBRARY_PATHS_SDL) $(SDL)
 
-bin/sdl2: $(TEST_SDL2)
-	${GPP_EX} bin/sdl2 $(TEST_SDL2) $(LIBRARY_PATHS_SDL) $(SDL)
+# bin/sdl2: $(TEST_SDL2)
+# 	${GPP_EX} bin/sdl2 $(TEST_SDL2) $(LIBRARY_PATHS_SDL) $(SDL)
 
-obj/core/%.o: src/core/%.cpp
+obj/core/%.o: src/core/%.cpp 
 	${GPP_O} -o $@ $< $(INCLUDE_PATHS_SDL)
 
 clean:

@@ -1,4 +1,5 @@
 #include "Vec2D.h"
+#include "Terrain.h"
 #ifndef BALL_H
 #define BALL_H
 

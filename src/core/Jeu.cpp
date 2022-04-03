@@ -4,14 +4,14 @@ Jeu::Jeu() : terrain(), ball(), PlayerOne(), PlayerTwo()
 {
 }
 
-Terrain &Jeu::getTerrain() { return ter; }
-Paddle &Jeu::getPaddle1() { return player1; }
-Paddle &Jeu::getPaddle2() { return player2; }
+Terrain &Jeu::getTerrain() { return terrain; }
+Paddle &Jeu::getPaddle1() { return PlayerOne; }
+Paddle &Jeu::getPaddle2() { return PlayerTwo; }
 
-const Terrain &Jeu::getConstTerrain() const { return ter; }
-const Ball &Jeu::getConstBall() const { return b; }
-const Paddle &Jeu::getConstPaddle1() const { return player1; }
-const Paddle &Jeu::getConstPaddle2() const { return player2; }
+const Terrain &Jeu::getConstTerrain() const { return terrain; }
+const Ball &Jeu::getConstBall() const { return ball; }
+const Paddle &Jeu::getConstPaddle1() const { return PlayerOne; }
+const Paddle &Jeu::getConstPaddle2() const { return PlayerTwo; }
 
 void Jeu::actionsAutomatiques()
 {
@@ -22,13 +22,13 @@ bool Jeu::actionClavier(const char touche)
 {
     switch (touche)
     {
-    case 'z':
+    case 'q':
         PlayerOne.haut(terrain);
         break;
-    case 's':
+    case 'a':
         PlayerOne.bas(terrain);
         break;
-    case 'o':
+    case 'p':
         PlayerTwo.haut(terrain);
         break;
     case 'l':
@@ -36,5 +36,4 @@ bool Jeu::actionClavier(const char touche)
     }
     // if (terrain.getXY(ball.getX(), ball.getY())=='.'){
     //   terrain
-}
 }

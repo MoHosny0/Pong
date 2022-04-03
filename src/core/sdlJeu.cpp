@@ -5,7 +5,7 @@
 #include "sdlJeu.h"
 using namespace std;
 
-const int TAILLE_SPRITE = 32;
+const int TAILLE_SPRITE = 15;
 const int BALL_SIZE = 8;
 
 float temps()
@@ -67,15 +67,19 @@ void sdlJeu::sdlAff()
     // Draw the net
     for (int y = 0; y < WINDOW_HEIGHT; ++y)
     {
-        if (y % 20)
+        if (y % 15)
         {
             SDL_RenderDrawPoint(renderer, WINDOW_WIDTH / 2, y);
         }
     }
 
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
+
     // Draw the Ball
-    balle.x = ball.getPosition().getX() * TAILLE_SPRITE;
-    balle.y = ball.getPosition().getY() * TAILLE_SPRITE;
+    balle.x = ball.getPosition().getX();
+    balle.y = ball.getPosition().getY();
+    balle.x *= TAILLE_SPRITE;
+    balle.y *= TAILLE_SPRITE;
     balle.w = BALL_SIZE;
     balle.h = BALL_SIZE;
     SDL_RenderFillRect(renderer, &balle);
