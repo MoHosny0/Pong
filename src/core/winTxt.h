@@ -18,7 +18,7 @@ public:
     WinTXT (int dx, int dy);
     void clear (char c=' ');
     void print (int x, int y, char c);
-    void printPaddle (int x1, int x2, int y1, int y2, char c);
+    void printPaddle (int x1, int x2, int y1, char c);
     //void print (int x, int y, char* c);
     void draw (int x=0, int y=0);
     void pause();

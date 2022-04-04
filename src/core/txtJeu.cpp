@@ -37,6 +37,8 @@ void affiche(WinTXT & win, Jeu & jeu)
     const Paddle &paddle1 = jeu.getConstPaddle1();
     const Paddle &paddle2 = jeu.getConstPaddle2();
 
+	win.clear();
+
     int dimx = terrain.getDimX();
     int dimy = terrain.getDimY();
 
@@ -55,8 +57,8 @@ void affiche(WinTXT & win, Jeu & jeu)
 	win.print(ball.getPosition().getX() , ball.getPosition().getY(), '@');
 	
     // Affichage des paddles
-	win.printPaddle(paddle1.getPosition().x,3,  paddle1.getPosition().y, 12, '#');
-    win.printPaddle(paddle2.getPosition().x,dimx-5, paddle2.getPosition().y, 12 , '#');
+	win.printPaddle(paddle1.getPosition().x,3,  paddle1.getPosition().y,  '#');
+    win.printPaddle(paddle2.getPosition().x,dimx-5, paddle2.getPosition().y,  '#');
 
 	win.draw();
 }
