@@ -1,16 +1,28 @@
 #include "Ball.h"
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
 
 Ball::Ball()
 {
+    srand (static_cast <unsigned> (time(0)));
+    
+    float r1 = ((rand()) / ((RAND_MAX/2)) - 1 );
+    float r2 = ((rand()) / ((RAND_MAX/2)) - 1 );
+    
     position = Vec2D(40, 15);
+    velocity = Vec2D(r1, r2);
 }
 
 Ball::Ball(const Vec2D &InitialPosition, const float BallRadius)
 {
     position = InitialPosition;
     radius = BallRadius;
-    velocity = Vec2D(0.0f, 0.0f);
+    velocity = Vec2D(1.0f, 1.0f);
 }
+
 const Vec2D &Ball::getPosition() const { return position; }
 const Vec2D &Ball::getVelocity() const { return velocity; }
 const float &Ball::getRadius() const { return radius; }
@@ -28,7 +40,8 @@ void Ball::setRadius(const float NewRadius)
     radius = NewRadius;
 }
 
-void Ball::bougeAuto(const Terrain &t)
+void Ball::bougeAuto(/*const Terrain &t*/)
 {
-    // TODO: mouvement de la balle et changement de direction en cas de collision avec les cote
+    setPosition( position += getVelocity());
+    
 }

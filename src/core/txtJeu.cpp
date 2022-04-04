@@ -36,9 +36,12 @@ void affiche(WinTXT & win, Jeu & jeu)
     const Ball &ball = jeu.getConstBall();
     const Paddle &paddle1 = jeu.getConstPaddle1();
     const Paddle &paddle2 = jeu.getConstPaddle2();
+	
+	cout << "x2 = " << terrain.getDimX() - paddle2.getPosition().x -2  << " " << "y2 = " << paddle2.getPosition().y <<endl;
+    // cout << "x = " << x << " " << "y = " << y <<endl;
 
-	win.clear();
-
+	//win.clear();
+	txtClear();
     int dimx = terrain.getDimX();
     int dimy = terrain.getDimY();
 
@@ -56,9 +59,10 @@ void affiche(WinTXT & win, Jeu & jeu)
     // Affichage de la balle
 	win.print(ball.getPosition().getX() , ball.getPosition().getY(), '@');
 	
-    // Affichage des paddles
-	win.printPaddle(paddle1.getPosition().x,3,  paddle1.getPosition().y,  '#');
-    win.printPaddle(paddle2.getPosition().x,dimx-5, paddle2.getPosition().y,  '#');
+    // // Affichage des paddles
+	win.printPaddle(paddle1.getPosition().x, 3, paddle1.getPosition().y,  '#');
+    win.printPaddle(paddle2.getPosition().x, dimx-5, paddle2.getPosition().y,  '#');
+	
 
 	win.draw();
 }
@@ -77,14 +81,15 @@ void boucle(Jeu & jeu)
 
 	do {
 	    affiche(win,jeu);
-
+		
         #ifdef _WIN32
         Sleep(100);
 		#else
 		usleep(100000);
         #endif // WIN32
 
-		//jeu.actionsAutomatiques();
+		
+		jeu.actionsAutomatiques();
 
 		c = win.getCh();
 		switch (c) {

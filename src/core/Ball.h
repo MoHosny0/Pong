@@ -20,6 +20,6 @@ public:
     void setVelocity(const Vec2D &NewVelocity);
     void setRadius(const float NewRadius);
 
-    void bougeAuto(const Terrain &t);
+    void bougeAuto(/*const Terrain &t*/);
 };
 #endif
