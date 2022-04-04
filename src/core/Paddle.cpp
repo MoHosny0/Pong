@@ -2,7 +2,7 @@
 
 Paddle::Paddle() {
     rect.x = 2;
-    rect.y = 15;
+    rect.y = 13;
 }
 
 Paddle::Paddle(const Rectangle StartingPosition)
