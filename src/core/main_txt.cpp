@@ -16,9 +16,9 @@ int main()
     // getch();                // On attend que l'utilisateur appui sur une touche pour quitter
     // endwin(); 
 
-    Terrain terr;
+    Jeu jeu;
     txtClear();
-    boucle(terr);
+    boucle(jeu);
     txtClear();
     
     // char ch;

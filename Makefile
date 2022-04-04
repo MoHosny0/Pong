@@ -1,5 +1,5 @@
 SDL = -lSDL2
-_OBJ = main_sdl.o sdlJeu.o Jeu.o Vec2D.o Terrain.o Ball.o txtJeu.o Paddle.o
+_OBJ = main_txt.o sdlJeu.o Jeu.o Vec2D.o Terrain.o Ball.o txtJeu.o Paddle.o winTxt.o
 OBJ = $(patsubst %,obj/core/%,$(_OBJ))
 
 TEST_SDL2 = obj/core/main_sdl.o obj/core/Jeu.o obj/core/Paddle.o obj/core/Ball.o obj/core/Terrain.o obj/core/Vec2D.o

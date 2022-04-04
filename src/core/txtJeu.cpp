@@ -1,5 +1,6 @@
 #include "txtJeu.h"
 #include "Terrain.h"
+#include "winTxt.h"
 
 
 
@@ -27,85 +28,80 @@ void txtClear()
     system("clear");
 }
 
-void affiche(Terrain terr)
+void affiche(WinTXT & win, Jeu & jeu)
 {
-    int dimx = terr.getDimX();
-    int dimy = terr.getDimY();
-    cout << dimx << " " << dimy << endl;
+    
+    
+    const Terrain &terrain = jeu.getConstTerrain();
+    const Ball &ball = jeu.getConstBall();
+    const Paddle &paddle1 = jeu.getConstPaddle1();
+    const Paddle &paddle2 = jeu.getConstPaddle2();
+
+    int dimx = terrain.getDimX();
+    int dimy = terrain.getDimY();
+
+    
     for (int y = 0; y < dimy; y++)
     {
         for (int x = 0; x < dimx; x++)
         {
-            cout << terr.getXY(x, y);
-            // cout << "[" << x << "," << y << "]";
-
+            win.print(x,y,terrain.getXY(x,y));
+             
         }
-        cout << endl;
-    }
-}
-
-
-#if not defined _WIN32
-int kbhit() {
-    struct timeval tv;
-    fd_set fds;
-    tv.tv_sec = 0;
-    tv.tv_usec = 0;
-    FD_ZERO(&fds);
-    FD_SET(STDIN_FILENO, &fds); //STDIN_FILENO is 0
-    select(STDIN_FILENO+1, &fds, NULL, NULL, &tv);
-    return FD_ISSET(STDIN_FILENO, &fds);
-}
-#endif
-
-char getCh() { // lire un caractere si une touche a ete pressee
-    char touche=0;
-#ifdef _WIN32
-    if (kbhit())
-    {
-        DWORD mode;
-        DWORD n;
-        HANDLE consoleI = GetStdHandle(STD_INPUT_HANDLE);
-        GetConsoleMode(consoleI, &mode);
-        SetConsoleMode(consoleI, mode & ~ENABLE_LINE_INPUT & ~ENABLE_ECHO_INPUT);
-        ReadConsole(consoleI, &touche, 1, &n, NULL);
-    }
-#else
-    if (kbhit())
-        touche = fgetc(stdin);
-#endif
-    return touche;
-}
-
-void boucle(Terrain terr)
-{
-    affiche(terr);
-    
-    bool ok = true;
-    char c;
-    do
-    {
-        affiche(terr);
         
+    }
+    
+    // Affichage de la balle
+	win.print(ball.getPosition().getX() , ball.getPosition().getY(), '@');
+	
+    // Affichage des paddles
+	win.printPaddle(paddle1.getPosition().x,3,  paddle1.getPosition().y, 12, '#');
+    win.printPaddle(paddle2.getPosition().x,dimx-5, paddle2.getPosition().y, 12 , '#');
+
+	win.draw();
+}
+
+
+
+
+void boucle(Jeu & jeu)
+{
+    // Creation d'une nouvelle fenetre en mode texte
+	// => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
+    WinTXT win (jeu.getConstTerrain().getDimX(),jeu.getConstTerrain().getDimY());
+
+	bool ok = true;
+	int c;
+
+	do {
+	    affiche(win,jeu);
+
         #ifdef _WIN32
         Sleep(100);
 		#else
 		usleep(100000);
         #endif // WIN32
-        
-        
 
+		//jeu.actionsAutomatiques();
 
-        c = getCh();
-        cout << c << endl;
-        if(c == 'a') 
-        {
-            ok = false;
-            usleep(100000);
-        }
-        else cout << c << endl;
-        
-        txtClear();
+		c = win.getCh();
+		switch (c) {
+			case 'a':
+				jeu.actionClavier('a');
+				break;
+			case 'q':
+				jeu.actionClavier('q');
+				break;
+			case 'p':
+				jeu.actionClavier('p');
+				break;
+			case 'l':
+				jeu.actionClavier('l');
+				break;
+			case 'w':
+				ok = false;
+				break;
+		}
 
-    } while (ok);
+	} while (ok);
 }
