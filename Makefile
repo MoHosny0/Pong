@@ -1,5 +1,5 @@
-SDL = -lSDL2
-_OBJ = main_txt.o sdlJeu.o Jeu.o Vec2D.o Terrain.o Ball.o txtJeu.o Paddle.o winTxt.o Score.o
+#SDL = -lSDL2
+_OBJ = main_txt.o Jeu.o Vec2D.o Terrain.o Ball.o txtJeu.o Paddle.o winTxt.o Score.o
 OBJ = $(patsubst %,obj/core/%,$(_OBJ))
 
 TEST_SDL2 = obj/core/main_sdl.o obj/core/Jeu.o obj/core/Paddle.o obj/core/Ball.o obj/core/Terrain.o obj/core/Vec2D.o
@@ -40,7 +40,7 @@ obj/core/%.o: src/core/%.cpp
 
 clean:
 ifeq ($(OS),Windows_NT)
-	del /f obj/core/* bin/*
+	del /f obj\core\* bin\*
 else
 	rm -f obj/core/* bin/*
 endif
