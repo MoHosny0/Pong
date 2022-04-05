@@ -9,8 +9,31 @@ Ball::Ball()
 {
     srand (static_cast <unsigned> (time(0)));
     
-    float r1 = ((rand()) / ((RAND_MAX/2)) - 1 );
-    float r2 = ((rand()) / ((RAND_MAX/2)) - 1 );
+    float r1;
+    float r2;
+
+    do
+    {
+        r1 = ((rand()) / ((RAND_MAX/2)) - 1 );
+    } while (r1 == 0);
+    
+    do
+    {
+        r2 = ((rand()) / ((RAND_MAX/2)) - 1 );
+    } while (r2 == 0);
+
+    // float r1 = ((rand()) / ((RAND_MAX/2)) - 1 );
+    // float r2 = ((rand()) / ((RAND_MAX/2)) - 1 );
+
+    /*while(r1 == 0)
+    {
+        float r1 = ((rand()) / ((RAND_MAX/2)) - 1 );
+    }
+
+    while(r2 == 0.0f)
+    {
+        float r2 = ((rand()) / ((RAND_MAX/2)) - 1 );
+    }*/
     
     position = Vec2D(40, 15);
     velocity = Vec2D(r1, r2);
