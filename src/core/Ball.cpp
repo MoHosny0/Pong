@@ -14,16 +14,18 @@ Ball::Ball()
 
     do
     {
-        r1 = ((rand()) / ((RAND_MAX/2)) - 1 );
+        r1 = ((rand()) / ((RAND_MAX/3)) - 1 );
+    
     } while (r1 == 0);
     
     do
     {
-        r2 = ((rand()) / ((RAND_MAX/2)) - 1 );
+        r2 = ((rand()) / ((RAND_MAX/3)) - 1 );
+        
     } while (r2 == 0);
-
-    // float r1 = ((rand()) / ((RAND_MAX/2)) - 1 );
-    // float r2 = ((rand()) / ((RAND_MAX/2)) - 1 );
+ 
+    // float r1 = ((rand()) / ((RAND_MAX/3)) - 1 );
+    // float r2 = ((rand()) / ((RAND_MAX/3)) - 1 );
 
     /*while(r1 == 0)
     {
@@ -39,12 +41,12 @@ Ball::Ball()
     velocity = Vec2D(r1, r2);
 }
 
-Ball::Ball(const Vec2D &InitialPosition, const float BallRadius)
+/*Ball::Ball(const Vec2D &InitialPosition, const float BallRadius)
 {
     position = InitialPosition;
     radius = BallRadius;
     velocity = Vec2D(1.0f, 1.0f);
-}
+}*/
 
 const Vec2D &Ball::getPosition() const { return position; }
 const Vec2D &Ball::getVelocity() const { return velocity; }

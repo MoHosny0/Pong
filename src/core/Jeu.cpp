@@ -2,9 +2,11 @@
 #include <iostream>
 using namespace std;
 
-Jeu::Jeu() : terrain(), ball(), PlayerOne(), PlayerTwo()
+Jeu::Jeu() : terrain(), ball(), PlayerOne(), PlayerTwo(), PlayerTwoScore(), PlayerOneScore()
 {
 }
+
+
 
 Terrain &Jeu::getTerrain() { return terrain; }
 Paddle &Jeu::getPaddle1() { return PlayerOne; }
@@ -14,6 +16,7 @@ const Terrain &Jeu::getConstTerrain() const { return terrain; }
 const Ball &Jeu::getConstBall() const { return ball; }
 const Paddle &Jeu::getConstPaddle1() const { return PlayerOne; }
 const Paddle &Jeu::getConstPaddle2() const { return PlayerTwo; }
+
 
 void Jeu::collisions()
 {
@@ -33,13 +36,14 @@ void Jeu::collisions()
     float dimx = terrain.getDimX();
     float dimy = terrain.getDimY();
 
+    //collisions avec murs gauche et droite
     if ( (x == 1.0) || (x == dimx-1) )
     {
         ball.setVelocity(Vec2D(-a, b));
     }
     
         
-
+    //collisions avec murs haut et bas
     if ( (y == 1.0) || (y == dimy-1) )
     {
         
@@ -47,6 +51,7 @@ void Jeu::collisions()
     }
     
 
+    //collisions avec paddles
     if( (x > x1) && (x < (x1+4) ) && (y > y1) && (y < (y1+5) ))
     {
         ball.setVelocity(Vec2D(-a, b));
@@ -60,11 +65,59 @@ void Jeu::collisions()
     
 }
 
+void Jeu::perdu()
+{
+    float dimx = terrain.getDimX();
+    float x = ball.getPosition().getX();
+    
+    float r1;
+    float r2;
+
+    //collisions avec murs gauche et droite
+    if ( x == 1.0 )
+    {
+        ball.setPosition(Vec2D(40,15));
+
+        do
+        {
+            r1 = ((rand()) / ((RAND_MAX/3)) - 1 );
+            if(r1 < 0) r1 = -r1;
+        } while (r1 == 0);
+    
+        do
+        {
+            r2 = ((rand()) / ((RAND_MAX/3)) - 1 );
+        } while (r2 == 0);
+
+        ball.setVelocity(Vec2D(r1, r2));
+    }
+
+    else if ( x == dimx-1 )
+    {
+        ball.setPosition(Vec2D(40,15));
+
+        do
+        {
+            r1 = ((rand()) / ((RAND_MAX/3)) - 1 );
+            if(r1 > 0) r1 = -r1;
+
+        } while (r1 == 0);
+    
+        do
+        {
+            r2 = ((rand()) / ((RAND_MAX/3)) - 1 );
+        } while (r2 == 0);
+
+        ball.setVelocity(Vec2D(r1, r2));
+    }
+}
+
 void Jeu::actionsAutomatiques()
 {
     ball.bougeAuto();
     
     collisions();
+    perdu();
 }
 
 void Jeu::actionClavier(const char touche)
