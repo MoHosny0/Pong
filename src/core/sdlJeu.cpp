@@ -118,7 +118,7 @@ void sdlJeu::sdlBoucle()
     {
 
         nt = SDL_GetTicks();
-        if (nt - t > 500)
+        if (nt - t > 80)
         {
             jeu.actionsAutomatiques();
             t = nt;
