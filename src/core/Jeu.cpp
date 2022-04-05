@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-Jeu::Jeu() : terrain(), ball(), PlayerOne(), PlayerTwo(), PlayerTwoScore(), PlayerOneScore()
+Jeu::Jeu() : terrain(), ball(), PlayerOne(), PlayerTwo(), PlayerOneScore(), PlayerTwoScore()
 {
 }
 
@@ -16,6 +16,8 @@ const Terrain &Jeu::getConstTerrain() const { return terrain; }
 const Ball &Jeu::getConstBall() const { return ball; }
 const Paddle &Jeu::getConstPaddle1() const { return PlayerOne; }
 const Paddle &Jeu::getConstPaddle2() const { return PlayerTwo; }
+const Score &Jeu::getConstPlayerOneScore() const { return PlayerOneScore; }
+const Score &Jeu::getConstPlayerTwoScore() const { return PlayerTwoScore; }
 
 
 void Jeu::collisions()
@@ -73,7 +75,7 @@ void Jeu::perdu()
     float r1;
     float r2;
 
-    //collisions avec murs gauche et droite
+    //collisions avec murs gauche 
     if ( x == 1.0 )
     {
         ball.setPosition(Vec2D(40,15));
@@ -82,6 +84,8 @@ void Jeu::perdu()
         {
             r1 = ((rand()) / ((RAND_MAX/3)) - 1 );
             if(r1 < 0) r1 = -r1;
+
+
         } while (r1 == 0);
     
         do
@@ -90,8 +94,10 @@ void Jeu::perdu()
         } while (r2 == 0);
 
         ball.setVelocity(Vec2D(r1, r2));
+        PlayerTwoScore.setScore();
     }
 
+    //collisions avec murs droite
     else if ( x == dimx-1 )
     {
         ball.setPosition(Vec2D(40,15));
@@ -109,6 +115,7 @@ void Jeu::perdu()
         } while (r2 == 0);
 
         ball.setVelocity(Vec2D(r1, r2));
+        PlayerOneScore.setScore();
     }
 }
 

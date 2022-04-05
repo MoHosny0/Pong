@@ -15,13 +15,43 @@ private:
 
 public:
 
+    /**
+    @brief Création d'une fenêtre. 
+    */
     WinTXT (int dx, int dy);
+    
+    /**
+    @brief Efface le contenu de la fenêtre. 
+    */
     void clear (char c=' ');
+
+    /**
+    @brief Met le char au coordonées données dans le tableau de charactère. 
+    */
     void print (int x, int y, char c);
+    
+    /**
+    @brief Met le char du paddle au coordonées données dans le tableau de charactère. 
+    */
     void printPaddle (int x1, int x2, int y1, char c);
-    //void print (int x, int y, char* c);
+    
+
+    /**
+     * @brief Affiche la fenêtre. 
+     */
     void draw (int x=0, int y=0);
+
+    /**
+     * @brief Met en pause le système.
+     * 
+     */
     void pause();
+
+    /**
+     * @brief Récupère le char entré dans le terminal.
+     * 
+     * @return char 
+     */
     char getCh();
 
 };

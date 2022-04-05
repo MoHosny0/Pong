@@ -7,7 +7,7 @@
 #include "Score.h"
 
 /**
-@brief Un jeu (de pong) = un terrain, une balle et 2 paddles.
+@brief Un jeu (de pong) = un terrain, une balle, 2 paddles et 2 Score.
 */
 class Jeu
 {
@@ -72,6 +72,16 @@ public:
    @brief Renvoie le score du joueur 2.
    */
     const int getPlayerTwoScore() const;
+
+    /**
+   @brief Renvoie PlayerOneScore.
+   */
+    const Score &getConstPlayerOneScore() const;
+
+    /**
+   @brief Renvoie PlayerTwoScore.
+   */
+    const Score &getConstPlayerTwoScore() const;
 
     /**
      @brief Modifie la direction de la balle en cas de collision soit avec les murs soit avec les paddles.

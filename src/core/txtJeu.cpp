@@ -36,16 +36,20 @@ void affiche(WinTXT & win, Jeu & jeu)
     const Ball &ball = jeu.getConstBall();
     const Paddle &paddle1 = jeu.getConstPaddle1();
     const Paddle &paddle2 = jeu.getConstPaddle2();
+	const Score &score1 = jeu.getConstPlayerOneScore();
+	const Score &score2 = jeu.getConstPlayerTwoScore();
 	
-	cout << "x2 = " << terrain.getDimX() - paddle2.getPosition().x -2  << " " << "y2 = " << paddle2.getPosition().y <<endl;
+	//cout << "x2 = " << terrain.getDimX() - paddle2.getPosition().x -2  << " " << "y2 = " << paddle2.getPosition().y <<endl;
     // cout << "x = " << x << " " << "y = " << y <<endl;
+
+	
 
 	//win.clear();
 	txtClear();
     int dimx = terrain.getDimX();
     int dimy = terrain.getDimY();
 
-    
+   // cout << score1.getScore() << endl;
     for (int y = 0; y < dimy; y++)
     {
         for (int x = 0; x < dimx; x++)
@@ -59,7 +63,13 @@ void affiche(WinTXT & win, Jeu & jeu)
     // Affichage de la balle
 	win.print(ball.getPosition().getX() , ball.getPosition().getY(), '@');
 	
-    // // Affichage des paddles
+	char c1 = '0' + score1.getScore();
+	char c2 = '0' + score2.getScore();
+
+	win.print(0, 0, c1);
+	win.print(1, 0, c2);
+	
+    // Affichage des paddles
 	win.printPaddle(paddle1.getPosition().x, 3, paddle1.getPosition().y,  '#');
     win.printPaddle(paddle2.getPosition().x, dimx-5, paddle2.getPosition().y,  '#');
 	

@@ -4,11 +4,20 @@
 #include "winTxt.h"
 
 
+    /**
+    @brief Efface le contenu du terminal. 
+    */
+    void txtClear();
 
-void txtClear();
-void affiche(Terrain terr);
-void boucle(Jeu & jeu);
-// char getCh();
-// int kbhit();
+    /**
+    @brief Affiche le terrain sur le terminal. 
+    */
+    void affiche(Terrain terr);
+
+    /**
+    @brief Boucle du jeu en mode terminal. 
+    */
+    void boucle(Jeu & jeu);
+
 
 #endif
