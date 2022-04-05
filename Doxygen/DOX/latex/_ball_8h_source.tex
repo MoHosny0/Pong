@@ -1,0 +1,38 @@
+\hypertarget{_ball_8h_source}{}\doxysection{Ball.\+h}
+\label{_ball_8h_source}\index{C:/Users/mh116/Desktop/lifap4pong/pong/src/core/Ball.h@{C:/Users/mh116/Desktop/lifap4pong/pong/src/core/Ball.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include "{}Vec2D.h"{}}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}Terrain.h"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef BALL\_H}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define BALL\_H}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_ball}{Ball}}}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11 \textcolor{keyword}{private}:}
+\DoxyCodeLine{12     \mbox{\hyperlink{class_vec2_d}{Vec2D}} position;}
+\DoxyCodeLine{13     \mbox{\hyperlink{class_vec2_d}{Vec2D}} velocity;}
+\DoxyCodeLine{14     \textcolor{keywordtype}{float} radius;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20     \mbox{\hyperlink{class_ball_a86a144d3dad6c953e422e32435923bbb}{Ball}}();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{25     \mbox{\hyperlink{class_ball_a576148f85f223e24bd7e4cc4bdbf50df}{Ball}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_vec2_d}{Vec2D}} \&InitialPosition, \textcolor{keyword}{const} \textcolor{keywordtype}{float} BallRadius);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{30     \textcolor{keyword}{const} \mbox{\hyperlink{class_vec2_d}{Vec2D}} \&\mbox{\hyperlink{class_ball_a788d0b9da430d62b7a7be0d361373018}{getPosition}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{35     \textcolor{keyword}{const} \mbox{\hyperlink{class_vec2_d}{Vec2D}} \&\mbox{\hyperlink{class_ball_a8a706fedca4535b8c98c14b6836bbb07}{getVelocity}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{40     \textcolor{keyword}{const} \textcolor{keywordtype}{float} \&\mbox{\hyperlink{class_ball_a1032c59b9d5f2b22716abd2fc83c8b99}{getRadius}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ball_a272af846fdea5b8ef259febb6698ea4d}{setPosition}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_vec2_d}{Vec2D}} \&NewPosition);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{52     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ball_a4b742802dd05d00aa46851ce6e95bf2a}{setVelocity}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_vec2_d}{Vec2D}} \&NewVelocity);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{58     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ball_aeea5d8f1dd5439bb210ca5dab4f9952f}{setRadius}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} NewRadius);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{63     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ball_a6daec182c388d47acf37af8b4b4a0999}{bougeAuto}}(\textcolor{comment}{/*const Terrain \&t*/});}
+\DoxyCodeLine{64 \};}
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
