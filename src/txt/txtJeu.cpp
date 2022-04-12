@@ -47,15 +47,12 @@ void affiche(WinTXT &win, Jeu &jeu)
 	const Score &score1 = jeu.getConstPlayerOneScore();
 	const Score &score2 = jeu.getConstPlayerTwoScore();
 
-	// cout << "x2 = " << terrain.getDimX() - paddle2.getPosition().x -2  << " " << "y2 = " << paddle2.getPosition().y <<endl;
-	//  cout << "x = " << x << " " << "y = " << y <<endl;
-
-	// win.clear();
+	
 	txtClear();
 	int dimx = terrain.getDimX();
 	int dimy = terrain.getDimY();
 
-	// cout << score1.getScore() << endl;
+	
 	for (int y = 0; y < dimy; y++)
 	{
 		for (int x = 0; x < dimx; x++)
@@ -72,7 +69,8 @@ void affiche(WinTXT &win, Jeu &jeu)
 
 	win.print(0, 0, c1);
 	win.print(1, 0, c2);
-// paddle1.getPosition
+
+
 	// Affichage des paddles
 		win.printPaddle(paddle1.getPosition().x, paddle1.getPosition().y, PADD_WIDTH, PADD_HEIGHT  ,'#');
 		win.printPaddle(paddle2.getPosition().x, paddle2.getPosition().y, PADD_WIDTH, PADD_HEIGHT  ,'#');
@@ -80,17 +78,18 @@ void affiche(WinTXT &win, Jeu &jeu)
 	win.draw();
 }
 
-void init(Jeu jeu)
+void init(Jeu &jeu)
 {
 	Terrain &terrain = jeu.getTerrain();
 	Ball &ball = jeu.getBall();
 	Paddle &paddle1 = jeu.getPaddle1();
 	Paddle &paddle2 = jeu.getPaddle2();
 
+	
 	terrain.setDim(TERR_WIDTH, TERR_HEIGHT);
 	ball.setPosition(Vec2D(TERR_WIDTH/2, TERR_HEIGHT/2));
-	paddle1.setPosition(Vec2D(15, (TERR_HEIGHT/2) - (PADD_HEIGHT/2)));
-	paddle2.setPosition(Vec2D(TERR_WIDTH -1 - 2, (TERR_HEIGHT/2) - (PADD_HEIGHT/2)));
+	paddle1.setPosition(Vec2D(2, (TERR_HEIGHT/2) - (PADD_HEIGHT/2)));
+	paddle2.setPosition(Vec2D(TERR_WIDTH - 2 - PADD_WIDTH, (TERR_HEIGHT/2) - (PADD_HEIGHT/2)));
 }
 
 void boucle(Jeu &jeu)
@@ -116,7 +115,7 @@ void boucle(Jeu &jeu)
 		usleep(100000);
 #endif // WIN32
 
-		// jeu.actionsAutomatiques();
+		jeu.actionsAutomatiques();
 
 		c = win.getCh();
 		switch (c)
