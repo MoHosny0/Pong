@@ -60,8 +60,8 @@ obj/txt/%.o: src/txt/%.cpp
 
 clean:
 ifeq ($(OS),Windows_NT)
-	del /f obj\core\* bin\*
+	del /f obj\* bin\*
 else
-	rm -f obj/core/* bin/*
+	rm -f obj/*/*  bin/*
 endif
 	
