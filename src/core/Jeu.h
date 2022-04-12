@@ -36,12 +36,12 @@ public:
     /**
     @brief Renvoie le premier Paddle.
      */
-    Paddle &getPaddle1();
+    Paddle &getPaddleOne();
 
     /**
     @brief Renvoie le deuxième Paddle.
      */
-    Paddle &getPaddle2();
+    Paddle &getPaddleTwo();
 
     /**
    @brief Renvoie un terrain.
@@ -56,12 +56,12 @@ public:
     /**
    @brief Renvoie le premier Paddle.
     */
-    const Paddle &getConstPaddle1() const;
+    const Paddle &getConstPaddleOne() const;
 
     /**
     @brief Renvoie le deuxième Paddle.
      */
-    const Paddle &getConstPaddle2() const;
+    const Paddle &getConstPaddleTwo() const;
 
     /**
    @brief Renvoie le score du joueur 1.

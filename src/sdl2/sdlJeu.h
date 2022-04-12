@@ -12,11 +12,10 @@ private:
     SDL_Color font_color;
 
 public:
-    void init();
     sdlJeu();
     ~sdlJeu();
-    void sdlBoucle();
-    void sdlAff();
+    void sdlBoucle(Jeu &jeu);
+    void sdlAff(Jeu &jeu);
     SDL_Rect balle;
     SDL_Rect player1, player2;
 };

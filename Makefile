@@ -62,6 +62,6 @@ clean:
 ifeq ($(OS),Windows_NT)
 	del /f obj\* bin\*
 else
-	rm -f obj/*/*  bin/*
+	rm -f obj/*/* bin/*
 endif
 	

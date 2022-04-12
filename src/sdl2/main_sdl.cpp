@@ -2,7 +2,8 @@
 
 int main()
 {
+    Jeu j;
     sdlJeu sj;
-    sj.sdlBoucle();
+    sj.sdlBoucle(j);
     return 0;
 }

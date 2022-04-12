@@ -10,13 +10,13 @@ Jeu::Jeu() : terrain(), ball(), PlayerOne(), PlayerTwo(), PlayerOneScore(), Play
 
 Terrain &Jeu::getTerrain() { return terrain; }
 Ball &Jeu::getBall() { return ball; }
-Paddle &Jeu::getPaddle1() { return PlayerOne; }
-Paddle &Jeu::getPaddle2() { return PlayerTwo; }
+Paddle &Jeu::getPaddleOne() { return PlayerOne; }
+Paddle &Jeu::getPaddleTwo() { return PlayerTwo; }
 
 const Terrain &Jeu::getConstTerrain() const { return terrain; }
 const Ball &Jeu::getConstBall() const { return ball; }
-const Paddle &Jeu::getConstPaddle1() const { return PlayerOne; }
-const Paddle &Jeu::getConstPaddle2() const { return PlayerTwo; }
+const Paddle &Jeu::getConstPaddleOne() const { return PlayerOne; }
+const Paddle &Jeu::getConstPaddleTwo() const { return PlayerTwo; }
 const Score &Jeu::getConstPlayerOneScore() const { return PlayerOneScore; }
 const Score &Jeu::getConstPlayerTwoScore() const { return PlayerTwoScore; }
 

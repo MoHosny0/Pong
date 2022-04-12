@@ -40,62 +40,57 @@ void txtClear()
 void affiche(WinTXT &win, Jeu &jeu)
 {
 
-	const Terrain &terrain = jeu.getConstTerrain();
-	const Ball &ball = jeu.getConstBall();
-	const Paddle &paddle1 = jeu.getConstPaddle1();
-	const Paddle &paddle2 = jeu.getConstPaddle2();
-	const Score &score1 = jeu.getConstPlayerOneScore();
-	const Score &score2 = jeu.getConstPlayerTwoScore();
+	const Terrain &Terrain = jeu.getConstTerrain();
+	const Ball &Ball = jeu.getConstBall();
+	const Paddle &PaddleOne = jeu.getConstPaddleOne();
+	const Paddle &PaddleTwo = jeu.getConstPaddleTwo();
+	const Score &ScoreOne = jeu.getConstPlayerOneScore();
+	const Score &ScoreTwo = jeu.getConstPlayerTwoScore();
 
-	
 	txtClear();
-	int dimx = terrain.getDimX();
-	int dimy = terrain.getDimY();
+	int dimx = Terrain.getDimX();
+	int dimy = Terrain.getDimY();
 
-	
 	for (int y = 0; y < dimy; y++)
 	{
 		for (int x = 0; x < dimx; x++)
 		{
-			win.print(x, y, terrain.getXY(x, y));
+			win.print(x, y, Terrain.getXY(x, y));
 		}
 	}
 
 	// Affichage de la balle
-	win.print(ball.getPosition().getX(), ball.getPosition().getY(), '@');
+	win.print(Ball.getPosition().getX(), Ball.getPosition().getY(), '@');
 
-	char c1 = '0' + score1.getScore();
-	char c2 = '0' + score2.getScore();
+	char CharScoreOne = '0' + ScoreOne.getScore();
+	char CharScoreTwo = '0' + ScoreTwo.getScore();
 
-	win.print(0, 0, c1);
-	win.print(1, 0, c2);
-
+	win.print(0, 0, CharScoreOne);
+	win.print(1, 0, CharScoreTwo);
 
 	// Affichage des paddles
-		win.printPaddle(paddle1.getPosition().x, paddle1.getPosition().y, PADD_WIDTH, PADD_HEIGHT  ,'#');
-		win.printPaddle(paddle2.getPosition().x, paddle2.getPosition().y, PADD_WIDTH, PADD_HEIGHT  ,'#');
+	win.printPaddle(PaddleOne.getPosition().x, PaddleOne.getPosition().y, PADD_WIDTH, PADD_HEIGHT, '#');
+	win.printPaddle(PaddleTwo.getPosition().x, PaddleTwo.getPosition().y, PADD_WIDTH, PADD_HEIGHT, '#');
 
 	win.draw();
 }
 
 void init(Jeu &jeu)
 {
-	Terrain &terrain = jeu.getTerrain();
-	Ball &ball = jeu.getBall();
-	Paddle &paddle1 = jeu.getPaddle1();
-	Paddle &paddle2 = jeu.getPaddle2();
+	Terrain &Terrain = jeu.getTerrain();
+	Ball &Ball = jeu.getBall();
+	Paddle &PaddleOne = jeu.getPaddleOne();
+	Paddle &PaddleTwo = jeu.getPaddleTwo();
 
-	
-	terrain.setDim(TERR_WIDTH, TERR_HEIGHT);
-	ball.setPosition(Vec2D(TERR_WIDTH/2, TERR_HEIGHT/2));
-	paddle1.setPosition(Vec2D(2, (TERR_HEIGHT/2) - (PADD_HEIGHT/2)));
-	paddle2.setPosition(Vec2D(TERR_WIDTH - 2 - PADD_WIDTH, (TERR_HEIGHT/2) - (PADD_HEIGHT/2)));
+	Terrain.setDim(TERR_WIDTH, TERR_HEIGHT);
+	Ball.setPosition(Vec2D(TERR_WIDTH / 2, TERR_HEIGHT / 2));
+	PaddleOne.setPosition(Vec2D(2, (TERR_HEIGHT / 2) - (PADD_HEIGHT / 2)));
+	PaddleTwo.setPosition(Vec2D(TERR_WIDTH - 2 - PADD_WIDTH, (TERR_HEIGHT / 2) - (PADD_HEIGHT / 2)));
 }
 
 void boucle(Jeu &jeu)
 {
-	
-	
+
 	// Creation d'une nouvelle fenetre en mode texte
 	// => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
 	WinTXT win(jeu.getConstTerrain().getDimX(), jeu.getConstTerrain().getDimY());

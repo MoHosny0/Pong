@@ -12,7 +12,7 @@
     /**
     @brief Affiche le terrain sur le terminal. 
     */
-    void affiche(Terrain terr);
+    void affiche(Terrain terrain);
 
     /**
     @brief Boucle du jeu en mode terminal. 
