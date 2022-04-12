@@ -5,14 +5,31 @@
 #include "sdlJeu.h"
 using namespace std;
 
-const int TAILLE_SPRITE = 15;
+// Dimensions SDL
+const int WINDOW_WIDTH = 1500;
+const int WINDOW_HEIGHT = 800;
+
 const int BALL_SIZE = 8;
+
 const int PADDLE_HEIGHT = 40;
 const int PADDLE_WIDTH = 8;
 
 float temps()
 {
     return float(SDL_GetTicks()) / CLOCKS_PER_SEC; // conversion des ms en secondes en divisant par 1000
+}
+
+sdlJeu::init()
+{
+    const Terrain &terrain = jeu.getTerrain();
+    const Ball &ball = jeu.getBall();
+    const Paddle &paddle1 = jeu.getPaddle1();
+    const Paddle &paddle2 = jeu.getPaddle2();
+
+    terrain.setPosition(WINDOW_WIDTH, WINDOW_HEIGHT);
+    ball.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+    paddle1.setPosition(Vec2D(10, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
+    paddle2.setPosition(Vec2D(WINDOW_WIDTH - 10 - 1, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)))
 }
 
 sdlJeu::sdlJeu() : jeu()
@@ -25,11 +42,6 @@ sdlJeu::sdlJeu() : jeu()
         SDL_Quit();
         exit(1);
     }
-
-    WINDOW_WIDTH = jeu.getConstTerrain().getDimX();
-    WINDOW_HEIGHT = jeu.getConstTerrain().getDimY();
-    WINDOW_WIDTH *= TAILLE_SPRITE;
-    WINDOW_HEIGHT *= TAILLE_SPRITE;
 
     cout << "Window is created with dimensions " << WINDOW_WIDTH << "x" << WINDOW_HEIGHT << endl;
 
@@ -61,10 +73,6 @@ void sdlJeu::sdlAff()
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 
     int x, y;
-    const Terrain &terrain = jeu.getConstTerrain();
-    const Ball &ball = jeu.getConstBall();
-    const Paddle &paddle1 = jeu.getConstPaddle1();
-    const Paddle &paddle2 = jeu.getConstPaddle2();
 
     // Draw the net
     for (int y = 0; y < WINDOW_HEIGHT; ++y)
@@ -80,29 +88,26 @@ void sdlJeu::sdlAff()
     // Draw the Ball
     balle.x = ball.getPosition().getX();
     balle.y = ball.getPosition().getY();
-    balle.x *= TAILLE_SPRITE;
-    balle.y *= TAILLE_SPRITE;
     balle.w = BALL_SIZE;
     balle.h = BALL_SIZE;
     SDL_RenderFillRect(renderer, &balle);
     cout << "Drawing ball at coordinates [" << balle.x << "," << balle.y << "]" << endl;
 
-    // Draw paddles
-    player1.x = paddle1.getPosition().x;
-    player1.y = paddle1.getPosition().y;
-    player1.x *= TAILLE_SPRITE;
-    player1.y *= TAILLE_SPRITE;
+    // Draw the Paddles
+
     player1.w = PADDLE_WIDTH;
     player1.h = PADDLE_HEIGHT;
-    SDL_RenderFillRect(renderer, &player1);
-    cout << "Drawing Paddle 1 at coordinates [" << player1.x << "," << player1.y << "]" << endl;
-    player2.x = terrain.getDimX() - paddle2.getPosition().x;
-    player2.y = paddle2.getPosition().y;
-    player2.x *= TAILLE_SPRITE;
-    player2.y *= TAILLE_SPRITE;
+    player1.x = paddle1.getPosition().x;
+    player1.y = paddle1.getPosition().y;
+
     player2.w = PADDLE_WIDTH;
     player2.h = PADDLE_HEIGHT;
+    player2.x = paddle2.getPosition().x;
+    player2.y = paddle2.getPosition().y;
+
+    SDL_RenderFillRect(renderer, &player1);
     SDL_RenderFillRect(renderer, &player2);
+    cout << "Drawing Paddle 1 at coordinates [" << player1.x << "," << player1.y << "]" << endl;
     cout << "Drawing Paddle 2 at coordinates [" << player2.x << "," << player2.y << "]" << endl;
 }
 
