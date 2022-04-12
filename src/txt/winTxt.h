@@ -33,7 +33,7 @@ public:
     /**
     @brief Met le char du paddle au coordonées données dans le tableau de charactère. 
     */
-    void printPaddle (int x1, int x2, int y1, char c);
+    void printPaddle (int x1, int y1, int width, int height, char c);
     
 
     /**

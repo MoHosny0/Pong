@@ -48,3 +48,9 @@ char Terrain::getXY(const int x, const int y) const
     assert(y < dimy);
     return ter[x][y];
 }
+
+void Terrain::setDim(const int x, const int y)
+{
+    dimx = x;
+    dimy = y;
+}

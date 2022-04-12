@@ -42,6 +42,8 @@ public:
     @param y : ordonnée de la case de l'objet
     */
     char getXY(const int x, const int y) const;
+
+    void setDim(const int x, const int y);
 };
 
 #endif

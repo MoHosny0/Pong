@@ -21,6 +21,12 @@
 #endif
 using namespace std;
 
+const int TERR_WIDTH = 80;
+const int TERR_HEIGHT = 30;
+
+const int PADD_WIDTH = 2;
+const int PADD_HEIGHT = 5;
+
 void txtClear()
 {
 
@@ -66,19 +72,36 @@ void affiche(WinTXT &win, Jeu &jeu)
 
 	win.print(0, 0, c1);
 	win.print(1, 0, c2);
-
+// paddle1.getPosition
 	// Affichage des paddles
-	win.printPaddle(paddle1.getPosition().x, 3, paddle1.getPosition().y, '#');
-	win.printPaddle(paddle2.getPosition().x, dimx - 5, paddle2.getPosition().y, '#');
+		win.printPaddle(paddle1.getPosition().x, paddle1.getPosition().y, PADD_WIDTH, PADD_HEIGHT  ,'#');
+		win.printPaddle(paddle2.getPosition().x, paddle2.getPosition().y, PADD_WIDTH, PADD_HEIGHT  ,'#');
 
 	win.draw();
 }
 
+void init(Jeu jeu)
+{
+	Terrain &terrain = jeu.getTerrain();
+	Ball &ball = jeu.getBall();
+	Paddle &paddle1 = jeu.getPaddle1();
+	Paddle &paddle2 = jeu.getPaddle2();
+
+	terrain.setDim(TERR_WIDTH, TERR_HEIGHT);
+	ball.setPosition(Vec2D(TERR_WIDTH/2, TERR_HEIGHT/2));
+	paddle1.setPosition(Vec2D(15, (TERR_HEIGHT/2) - (PADD_HEIGHT/2)));
+	paddle2.setPosition(Vec2D(TERR_WIDTH -1 - 2, (TERR_HEIGHT/2) - (PADD_HEIGHT/2)));
+}
+
 void boucle(Jeu &jeu)
 {
+	
+	
 	// Creation d'une nouvelle fenetre en mode texte
 	// => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
 	WinTXT win(jeu.getConstTerrain().getDimX(), jeu.getConstTerrain().getDimY());
+
+	init(jeu);
 
 	bool ok = true;
 	int c;
@@ -93,7 +116,7 @@ void boucle(Jeu &jeu)
 		usleep(100000);
 #endif // WIN32
 
-		jeu.actionsAutomatiques();
+		// jeu.actionsAutomatiques();
 
 		c = win.getCh();
 		switch (c)

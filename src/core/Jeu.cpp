@@ -9,6 +9,7 @@ Jeu::Jeu() : terrain(), ball(), PlayerOne(), PlayerTwo(), PlayerOneScore(), Play
 
 
 Terrain &Jeu::getTerrain() { return terrain; }
+Ball &Jeu::getBall() { return ball; }
 Paddle &Jeu::getPaddle1() { return PlayerOne; }
 Paddle &Jeu::getPaddle2() { return PlayerTwo; }
 
@@ -125,6 +126,7 @@ void Jeu::actionsAutomatiques()
     
     collisions();
     perdu();
+
 }
 
 void Jeu::actionClavier(const char touche)

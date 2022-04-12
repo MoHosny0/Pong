@@ -96,19 +96,19 @@ void WinTXT::print (int x, int y, char c) {
     win[y*dimx+x] = c;
 }
 
-void WinTXT::printPaddle (int x1, int x2, int y1, char c) {
+void WinTXT::printPaddle (int x1, int y1, int width, int height, char c) {
     if (x1<0) return;
     if (y1<0) return;
     if (x1>=dimx) return;
     if (y1>=dimy) return;
-    if (x2<0) return;
-    //if (y2<0) return;
-    if (x2>=dimx) return;
+    // if (x2<0) return;
+    // if (y2<0) return;
+    // if (x2>=dimx) return;
     //if (y2>=dimy) return;
 
-    for (int y = y1; y < y1+5; y++)
+    for (int y = y1; y < y1+height; y++)
     {
-        for (int x = x2; x < x1+x2; x++)
+        for (int x = x1; x < x1+width; x++)
         {
             win[y*dimx+x] = c;
         }
