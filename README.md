@@ -14,5 +14,7 @@
 
 ## À faire:
 
-- Créer dossier **src/core** et **obj/core.**
-- Vérifier que tout compile.
+- affichage du score sur l'écran (en cours)
+- enlever getDimX de **perdu()**, car utilise taille statique
+- verifier que la balle respawn au milieu du terrain
+- reverifier collisions encore une fois

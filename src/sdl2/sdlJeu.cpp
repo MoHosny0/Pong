@@ -90,29 +90,31 @@ void sdlJeu::sdlAff(Jeu &jeu)
     const Score &ScoreTwo = jeu.getConstPlayerTwoScore();
 
     // Draw the Ball
-    balle.x = Ball.getPosition().getX();
-    balle.y = Ball.getPosition().getY();
-    balle.w = BALL_SIZE;
-    balle.h = BALL_SIZE;
-    SDL_RenderFillRect(renderer, &balle);
-    cout << "Drawing ball at coordinates [" << balle.x << "," << balle.y << "]" << endl;
+    Balle.x = Ball.getPosition().getX();
+    Balle.y = Ball.getPosition().getY();
+    Balle.w = BALL_SIZE;
+    Balle.h = BALL_SIZE;
+    SDL_RenderFillRect(renderer, &Balle);
+    cout << "Drawing Ball at coordinates [" << Balle.x << "," << Balle.y << "]" << endl;
 
     // Draw the Paddles
 
-    player1.w = PADDLE_WIDTH;
-    player1.h = PADDLE_HEIGHT;
-    player1.x = PaddleOne.getPosition().x;
-    player1.y = PaddleOne.getPosition().y;
+    PlayerOne.w = PADDLE_WIDTH;
+    PlayerOne.h = PADDLE_HEIGHT;
+    PlayerOne.x = PaddleOne.getPosition().x;
+    PlayerOne.y = PaddleOne.getPosition().y;
 
-    player2.w = PADDLE_WIDTH;
-    player2.h = PADDLE_HEIGHT;
-    player2.x = PaddleTwo.getPosition().x;
-    player2.y = PaddleTwo.getPosition().y;
+    PlayerTwo.w = PADDLE_WIDTH;
+    PlayerTwo.h = PADDLE_HEIGHT;
+    PlayerTwo.x = PaddleTwo.getPosition().x;
+    PlayerTwo.y = PaddleTwo.getPosition().y;
 
-    SDL_RenderFillRect(renderer, &player1);
-    SDL_RenderFillRect(renderer, &player2);
-    cout << "Drawing Paddle 1 at coordinates [" << player1.x << "," << player1.y << "]" << endl;
-    cout << "Drawing Paddle 2 at coordinates [" << player2.x << "," << player2.y << "]" << endl;
+    SDL_RenderFillRect(renderer, &PlayerOne);
+    SDL_RenderFillRect(renderer, &PlayerTwo);
+    cout << "Drawing Paddle 1 at coordinates [" << PlayerOne.x << "," << PlayerOne.y << "]" << endl;
+    cout << "Drawing Paddle 2 at coordinates [" << PlayerTwo.x << "," << PlayerTwo.y << "]" << endl;
+    cout << "Score: " << ScoreOne.getScore() << "-" << ScoreTwo.getScore() << endl;
+
 }
 
 void sdlJeu::sdlBoucle(Jeu &jeu)

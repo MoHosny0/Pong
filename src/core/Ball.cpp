@@ -9,8 +9,8 @@ Ball::Ball()
 {
     srand (static_cast <unsigned> (time(0)));
     
-    float r1;
-    float r2;
+    float r1; // change name
+    float r2; // change name
 
     do
     {
@@ -37,7 +37,7 @@ Ball::Ball()
         float r2 = ((rand()) / ((RAND_MAX/2)) - 1 );
     }*/
     
-    position = Vec2D(40, 15);
+    // position = Vec2D(40, 15);
     velocity = Vec2D(r1, r2);
 }
 

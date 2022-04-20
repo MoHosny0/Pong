@@ -89,7 +89,7 @@ public:
     void collisions();
 
     /**
-     @brief Déplace les paddles en haut ou enbas en fonction de al touche du clavier.
+     @brief Déplace les paddles en haut ou en bas en fonction de la touche du clavier.
      @param touche: touche du clavier.
     */
     void actionClavier(const char touche);

@@ -6,8 +6,6 @@ Jeu::Jeu() : terrain(), ball(), PlayerOne(), PlayerTwo(), PlayerOneScore(), Play
 {
 }
 
-
-
 Terrain &Jeu::getTerrain() { return terrain; }
 Ball &Jeu::getBall() { return ball; }
 Paddle &Jeu::getPaddleOne() { return PlayerOne; }
@@ -20,7 +18,6 @@ const Paddle &Jeu::getConstPaddleTwo() const { return PlayerTwo; }
 const Score &Jeu::getConstPlayerOneScore() const { return PlayerOneScore; }
 const Score &Jeu::getConstPlayerTwoScore() const { return PlayerTwoScore; }
 
-
 void Jeu::collisions()
 {
     float x = ball.getPosition().getX();
@@ -32,112 +29,110 @@ void Jeu::collisions()
     float x2 = PlayerTwo.getPosition().x;
     float y2 = PlayerTwo.getPosition().y;
 
-   
     float a = ball.getVelocity().getX();
     float b = ball.getVelocity().getY();
 
     float dimx = terrain.getDimX();
     float dimy = terrain.getDimY();
 
-    //collisions avec murs gauche et droite
-    if ( (x == 1.0) || (x == dimx-1) )
+    // collisions avec murs gauche et droite
+    if ((x == 1.0) || (x == dimx - 1))
     {
         ball.setVelocity(Vec2D(-a, b));
     }
-    
-        
-    //collisions avec murs haut et bas
-    if ( (y == 1.0) || (y == dimy-1) )
+
+    // collisions avec murs haut et bas
+    if ((y == 1.0) || (y == dimy - 1))
     {
-        
+
         ball.setVelocity(Vec2D(a, -b));
     }
-    
 
-    //collisions avec paddles
-    if( (x > x1) && (x < (x1+4) ) && (y > y1) && (y < (y1+5) ))
+    // collisions avec paddles
+    if ((x > x1) && (x < (x1 + 4)) && (y > y1) && (y < (y1 + 5)))
     {
         ball.setVelocity(Vec2D(-a, b));
     }
 
-    if( (x > (dimx - x2 - 5)) && (x < (dimx - x2 ) ) && (y > y2) && (y < (y2+5) ))
+    if ((x > (dimx - x2 - 5)) && (x < (dimx - x2)) && (y > y2) && (y < (y2 + 5)))
     {
         ball.setVelocity(Vec2D(-a, b));
     }
-
-    
 }
 
+// fonction too long and repetitive. create function to handle both goal sides
 void Jeu::perdu()
 {
-    float dimx = terrain.getDimX();
-    float x = ball.getPosition().getX();
-    
-    float r1;
-    float r2;
+    float dimX = terrain.getDimX();
+    float ballPosition = ball.getPosition().getX();
 
-    //collisions avec murs gauche 
-    if ( x == 1.0 )
+    float randOne;
+    float randTwo;
+
+    // but à gauche
+    if (ballPosition == 1.0)
     {
-        ball.setPosition(Vec2D(40,15));
+        ball.setPosition(Vec2D(40, 15)); // Devrait etre WINDOW_HEIGHT ET WIDTH COMME SDLJEU.CPP
 
         do
         {
-            r1 = ((rand()) / ((RAND_MAX/3)) - 1 );
-            if(r1 < 0) r1 = -r1;
+            randOne = ((rand()) / ((RAND_MAX / 3)) - 1);
+            if (randOne < 0)
+                randOne = -randOne;
 
+        } while (randOne == 0);
 
-        } while (r1 == 0);
-    
         do
         {
-            r2 = ((rand()) / ((RAND_MAX/3)) - 1 );
-        } while (r2 == 0);
+            randTwo = ((rand()) / ((RAND_MAX / 3)) - 1);
+        } while (randTwo == 0);
 
-        ball.setVelocity(Vec2D(r1, r2));
+        ball.setVelocity(Vec2D(randOne, randTwo));
         PlayerTwoScore.setScore();
     }
 
-    //collisions avec murs droite
-    else if ( x == dimx-1 )
+    // collisions avec murs droite
+    else if (ballPosition == dimX - 1)
     {
-        ball.setPosition(Vec2D(40,15));
+        ball.setPosition(Vec2D(40, 15));
 
         do
         {
-            r1 = ((rand()) / ((RAND_MAX/3)) - 1 );
-            if(r1 > 0) r1 = -r1;
+            randOne = ((rand()) / ((RAND_MAX / 3)) - 1);
+            if (randOne > 0)
+                randOne = -randOne;
 
-        } while (r1 == 0);
-    
+        } while (randOne == 0);
+
         do
         {
-            r2 = ((rand()) / ((RAND_MAX/3)) - 1 );
-        } while (r2 == 0);
+            randTwo = ((rand()) / ((RAND_MAX / 3)) - 1);
+        } while (randTwo == 0);
 
-        ball.setVelocity(Vec2D(r1, r2));
+        ball.setVelocity(Vec2D(randOne, randTwo));
         PlayerOneScore.setScore();
     }
 }
 
+// void Jeu::buts() {} // handle goals and reposition ball
+
+
 void Jeu::actionsAutomatiques()
 {
     ball.bougeAuto();
-    
     collisions();
     perdu();
-
 }
 
 void Jeu::actionClavier(const char touche)
 {
     switch (touche)
     {
-    case 'a':
+    case 'q':
         PlayerOne.haut(terrain);
         break;
 
-    case 'q':
+    case 'a':
         PlayerOne.bas(terrain);
         break;
 
@@ -149,5 +144,4 @@ void Jeu::actionClavier(const char touche)
         PlayerTwo.bas(terrain);
         break;
     }
-    
 }
