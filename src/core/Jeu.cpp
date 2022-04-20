@@ -63,8 +63,13 @@ void Jeu::collisions()
 // fonction too long and repetitive. create function to handle both goal sides
 void Jeu::perdu()
 {
-    float dimX = terrain.getDimX();
+    int WINDOW_WIDTH = terrain.getDimX();
+    int WINDOW_HEIGHT = terrain.getDimY();
     float ballPosition = ball.getPosition().getX();
+
+    cout << "Terrain Dim X: " << WINDOW_WIDTH << endl;
+    cout << "Terrain Dim Y: " << WINDOW_HEIGHT << endl;
+    cout << "Ball Horizontal Position:" << ballPosition << endl;
 
     float randOne;
     float randTwo;
@@ -72,7 +77,7 @@ void Jeu::perdu()
     // but à gauche
     if (ballPosition == 1.0)
     {
-        ball.setPosition(Vec2D(40, 15)); // Devrait etre WINDOW_HEIGHT ET WIDTH COMME SDLJEU.CPP
+        ball.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)); // Devrait etre WINDOW_HEIGHT ET WIDTH COMME SDLJEU.CPP
 
         do
         {
@@ -92,9 +97,9 @@ void Jeu::perdu()
     }
 
     // collisions avec murs droite
-    else if (ballPosition == dimX - 1)
+    else if (ballPosition == WINDOW_WIDTH - 1)
     {
-        ball.setPosition(Vec2D(40, 15));
+        ball.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
 
         do
         {
@@ -115,7 +120,6 @@ void Jeu::perdu()
 }
 
 // void Jeu::buts() {} // handle goals and reposition ball
-
 
 void Jeu::actionsAutomatiques()
 {

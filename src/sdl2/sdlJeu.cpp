@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include "sdlJeu.h"
+#include <SDL/SDL_ttf.h>
 using namespace std;
 
 // Dimensions SDL
@@ -25,8 +26,14 @@ void init(Jeu &jeu)
     Ball &Ball = jeu.getBall();
     Paddle &PaddleOne = jeu.getPaddleOne();
     Paddle &PaddleTwo = jeu.getPaddleTwo();
+    const Score &ScoreOne = jeu.getConstPlayerOneScore();
+    const Score &ScoreTwo = jeu.getConstPlayerTwoScore();
+
+    cout << "Terrain dimensions are [" << Terrain.getDimX() << "," << Terrain.getDimY() << "]" << endl;
 
     Terrain.setDim(WINDOW_WIDTH, WINDOW_HEIGHT);
+
+    cout << "Terrain dimensions are now [" << Terrain.getDimX() << "," << Terrain.getDimY() << "]" << endl;
     Ball.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
     PaddleOne.setPosition(Vec2D(10, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
     PaddleTwo.setPosition(Vec2D(WINDOW_WIDTH - 10 - 1, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
@@ -42,6 +49,12 @@ sdlJeu::sdlJeu()
         SDL_Quit();
         exit(1);
     }
+    // if (TTF_Init() != 0)
+    // {
+    //     cout << "Erreur lors de l'initialisation de la SDL_ttf : " << TTF_GetError() << endl;
+    //     SDL_Quit();
+    //     exit(1);
+    // }
 
     cout << "Window is created with dimensions " << WINDOW_WIDTH << "x" << WINDOW_HEIGHT << endl;
 
@@ -95,7 +108,7 @@ void sdlJeu::sdlAff(Jeu &jeu)
     Balle.w = BALL_SIZE;
     Balle.h = BALL_SIZE;
     SDL_RenderFillRect(renderer, &Balle);
-    cout << "Drawing Ball at coordinates [" << Balle.x << "," << Balle.y << "]" << endl;
+    // cout << "Drawing Ball at coordinates [" << Balle.x << "," << Balle.y << "]" << endl;
 
     // Draw the Paddles
 
@@ -111,10 +124,25 @@ void sdlJeu::sdlAff(Jeu &jeu)
 
     SDL_RenderFillRect(renderer, &PlayerOne);
     SDL_RenderFillRect(renderer, &PlayerTwo);
-    cout << "Drawing Paddle 1 at coordinates [" << PlayerOne.x << "," << PlayerOne.y << "]" << endl;
-    cout << "Drawing Paddle 2 at coordinates [" << PlayerTwo.x << "," << PlayerTwo.y << "]" << endl;
-    cout << "Score: " << ScoreOne.getScore() << "-" << ScoreTwo.getScore() << endl;
+    // cout << "Drawing Paddle 1 at coordinates [" << PlayerOne.x << "," << PlayerOne.y << "]" << endl;
+    // cout << "Drawing Paddle 2 at coordinates [" << PlayerTwo.x << "," << PlayerTwo.y << "]" << endl;
+    // cout << "Score: " << ScoreOne.getScore() << "-" << ScoreTwo.getScore() << endl;
 
+    // FONTS
+    // font = TTF_OpenFont("../../data/DejaVuSansCondensed.ttf", 50);
+    // if (font == NULL)
+    //     font = TTF_OpenFont("../data/DejaVuSansCondensed.ttf", 50);
+    // if (font == NULL)
+    // {
+    //     cout << "Failed to load DejaVuSansCondensed.ttf! SDL_TTF Error: " << TTF_GetError() << endl;
+    //     SDL_Quit();
+    //     exit(1);
+    // }
+    font_color.r = 50;
+    font_color.g = 50;
+    font_color.b = 255;
+    // font_im.setSurface(TTF_RenderText_Solid(font, "Pacman", font_color));
+    // font_im.loadFromCurrentSurface(renderer);
 }
 
 void sdlJeu::sdlBoucle(Jeu &jeu)
