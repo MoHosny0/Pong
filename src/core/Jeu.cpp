@@ -67,9 +67,9 @@ void Jeu::perdu()
     int WINDOW_HEIGHT = terrain.getDimY();
     float ballPosition = ball.getPosition().getX();
 
-    cout << "Terrain Dim X: " << WINDOW_WIDTH << endl;
-    cout << "Terrain Dim Y: " << WINDOW_HEIGHT << endl;
-    cout << "Ball Horizontal Position:" << ballPosition << endl;
+    // cout << "Terrain Dim X: " << WINDOW_WIDTH << endl;
+    // cout << "Terrain Dim Y: " << WINDOW_HEIGHT << endl;
+    // cout << "Ball Horizontal Position:" << ballPosition << endl;
 
     float randOne;
     float randTwo;
@@ -93,6 +93,7 @@ void Jeu::perdu()
         } while (randTwo == 0);
 
         ball.setVelocity(Vec2D(randOne, randTwo));
+        // cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
         PlayerTwoScore.setScore();
     }
 
@@ -115,6 +116,7 @@ void Jeu::perdu()
         } while (randTwo == 0);
 
         ball.setVelocity(Vec2D(randOne, randTwo));
+        // cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
         PlayerOneScore.setScore();
     }
 }

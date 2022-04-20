@@ -7,23 +7,23 @@ using namespace std;
 
 Ball::Ball()
 {
-    srand (static_cast <unsigned> (time(0)));
-    
+    srand(static_cast<unsigned>(time(0)));
+
     float r1; // change name
     float r2; // change name
 
     do
     {
-        r1 = ((rand()) / ((RAND_MAX/3)) - 1 );
-    
+        r1 = ((rand()) / ((RAND_MAX / 3)) - 1);
+
     } while (r1 == 0);
-    
+
     do
     {
-        r2 = ((rand()) / ((RAND_MAX/3)) - 1 );
-        
+        r2 = ((rand()) / ((RAND_MAX / 3)) - 1);
+
     } while (r2 == 0);
- 
+
     // float r1 = ((rand()) / ((RAND_MAX/3)) - 1 );
     // float r2 = ((rand()) / ((RAND_MAX/3)) - 1 );
 
@@ -36,9 +36,9 @@ Ball::Ball()
     {
         float r2 = ((rand()) / ((RAND_MAX/2)) - 1 );
     }*/
-    
-    // position = Vec2D(40, 15);
+
     velocity = Vec2D(r1, r2);
+    cout << "velocity: " << velocity.getX() << "," << velocity.getY() << endl;
 }
 
 /*Ball::Ball(const Vec2D &InitialPosition, const float BallRadius)
@@ -67,6 +67,5 @@ void Ball::setRadius(const float NewRadius)
 
 void Ball::bougeAuto(/*const Terrain &t*/)
 {
-    setPosition( position += getVelocity());
-    
+    setPosition(position += getVelocity());
 }

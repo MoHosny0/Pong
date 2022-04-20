@@ -17,4 +17,4 @@
 - affichage du score sur l'écran (en cours)
 - enlever getDimX de **perdu()**, car utilise taille statique
 - verifier que la balle respawn au milieu du terrain
-- reverifier collisions encore une fois
+- reverifier collisions encore une fois (pourquoi 1 et -1 seulement?)
