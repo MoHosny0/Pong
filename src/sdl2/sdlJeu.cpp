@@ -126,7 +126,7 @@ void sdlJeu::sdlAff(Jeu &jeu)
     SDL_RenderFillRect(renderer, &PlayerTwo);
     // cout << "Drawing Paddle 1 at coordinates [" << PlayerOne.x << "," << PlayerOne.y << "]" << endl;
     // cout << "Drawing Paddle 2 at coordinates [" << PlayerTwo.x << "," << PlayerTwo.y << "]" << endl;
-    // cout << "Score: " << ScoreOne.getScore() << "-" << ScoreTwo.getScore() << endl;
+    cout << "Score: " << ScoreOne.getScore() << "-" << ScoreTwo.getScore() << endl;
 
     // FONTS
     // font = TTF_OpenFont("../../data/DejaVuSansCondensed.ttf", 50);

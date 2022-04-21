@@ -54,6 +54,8 @@ obj/txt/%.o: src/txt/%.cpp
 	${GPP_O} -o $@ $< 
 
 
+# docu: doc/pacman.doxy
+# 	cd doc ; doxygen pacman.doxy
 
 clean:
 ifeq ($(OS),Windows_NT)

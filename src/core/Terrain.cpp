@@ -1,5 +1,6 @@
 #include "Terrain.h"
 #include <cassert>
+#include <iostream>
 
 Terrain::Terrain()
 {
@@ -27,7 +28,8 @@ Terrain::Terrain()
 
 bool Terrain::posEstValide(const int x, const int y) const
 {
-    return (x >= 0 && x < dimx && y >= 0 && y < dimy && (ter[x][y] != '|' || ter[x][y] != '_'));
+    std::cout << "Testing if " << y << "< " << dimy << std::endl;
+    return (x >= 0 && x < dimx && y >= 0 && y < dimy);
 }
 
 int Terrain::getDimX() const
