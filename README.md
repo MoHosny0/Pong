@@ -15,7 +15,7 @@
 ## À faire:
 
 - affichage du score sur l'écran (en cours)
-- enlever getDimX de **perdu()**, car utilise taille statique
+- enlever getDimX de **perdu()**, car utilise taille statique ***(fini)***
 - verifier que la balle respawn au milieu du terrain
 - reverifier collisions encore une fois (pourquoi 1 et -1 seulement?)
 - il est ou pong.doxy dans doc/ ?
