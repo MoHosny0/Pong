@@ -18,45 +18,46 @@ const Paddle &Jeu::getConstPaddleTwo() const { return PlayerTwo; }
 const Score &Jeu::getConstPlayerOneScore() const { return PlayerOneScore; }
 const Score &Jeu::getConstPlayerTwoScore() const { return PlayerTwoScore; }
 
-void Jeu::collisions()
+void Jeu::collisions() // accourcir les nom de variables, lignes trop longues.
 {
-    float x = ball.getPosition().getX();
-    float y = ball.getPosition().getY();
+    float ballHorizontal = ball.getPosition().getX();
+    float ballVertical = ball.getPosition().getY();
 
-    float x1 = PlayerOne.getPosition().x;
-    float y1 = PlayerOne.getPosition().y;
+    float paddleOneHorizontal = PlayerOne.getPosition().x;
+    float paddleOneVertical = PlayerOne.getPosition().y;
 
-    float x2 = PlayerTwo.getPosition().x;
-    float y2 = PlayerTwo.getPosition().y;
+    float paddleTwoHorizontal = PlayerTwo.getPosition().x;
+    float paddleTwoVertical = PlayerTwo.getPosition().y;
 
-    float a = ball.getVelocity().getX();
-    float b = ball.getVelocity().getY();
+    float ballVectorX = ball.getVelocity().getX();
+    float ballVectorY = ball.getVelocity().getY();
 
-    float dimx = terrain.getDimX();
-    float dimy = terrain.getDimY();
+    float WINDOW_WIDTH = terrain.getDimX();
+    float WINDOW_HEIGHT = terrain.getDimY();
 
     // collisions avec murs gauche et droite
-    if ((x == 1.0) || (x == dimx - 1))
+    if ((ballHorizontal == 1.0) || (ballHorizontal == WINDOW_WIDTH - 1))
     {
-        ball.setVelocity(Vec2D(-a, b));
+        // std::cout << "Ball touched wall at " << ballHorizontal << std::endl;
+        ball.setVelocity(Vec2D(-ballVectorX, ballVectorY));
     }
 
     // collisions avec murs haut et bas
-    if ((y == 1.0) || (y == dimy - 1))
+    if ((ballVertical == 1.0) || (ballVertical == WINDOW_HEIGHT - 1))
     {
 
-        ball.setVelocity(Vec2D(a, -b));
+        ball.setVelocity(Vec2D(ballVectorX, -ballVectorY));
     }
 
     // collisions avec paddles
-    if ((x > x1) && (x < (x1 + 4)) && (y > y1) && (y < (y1 + 5)))
+    if ((ballHorizontal > paddleOneHorizontal) && (ballHorizontal < (paddleOneHorizontal + 4)) && (ballVertical > paddleOneVertical) && (ballVertical < (paddleOneVertical + 5)))
     {
-        ball.setVelocity(Vec2D(-a, b));
+        ball.setVelocity(Vec2D(-ballVectorX, ballVectorY));
     }
 
-    if ((x > (dimx - x2 - 5)) && (x < (dimx - x2)) && (y > y2) && (y < (y2 + 5)))
+    if ((ballHorizontal > (WINDOW_WIDTH - paddleTwoHorizontal - 5)) && (ballHorizontal < (WINDOW_WIDTH - paddleTwoHorizontal)) && (ballVertical > paddleTwoVertical) && (ballVertical < (paddleTwoVertical + 5)))
     {
-        ball.setVelocity(Vec2D(-a, b));
+        ball.setVelocity(Vec2D(-ballVectorX, ballVectorY));
     }
 }
 

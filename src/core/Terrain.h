@@ -8,8 +8,8 @@ class Terrain
 {
 
 private:
-    int dimx;
-    int dimy;
+    int dimX;
+    int dimY;
     char ter[80][30];
 
 public:

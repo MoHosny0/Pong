@@ -60,6 +60,6 @@ public:
     /**
     @brief fait bouger la balle automatiquement.
     */
-    void bougeAuto(/*const Terrain &t*/);
+    void bougeAuto();
 };
 #endif

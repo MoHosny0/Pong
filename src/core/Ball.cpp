@@ -24,21 +24,8 @@ Ball::Ball()
 
     } while (r2 == 0);
 
-    // float r1 = ((rand()) / ((RAND_MAX/3)) - 1 );
-    // float r2 = ((rand()) / ((RAND_MAX/3)) - 1 );
-
-    /*while(r1 == 0)
-    {
-        float r1 = ((rand()) / ((RAND_MAX/2)) - 1 );
-    }
-
-    while(r2 == 0.0f)
-    {
-        float r2 = ((rand()) / ((RAND_MAX/2)) - 1 );
-    }*/
-
     velocity = Vec2D(r1, r2);
-    cout << "velocity: " << velocity.getX() << "," << velocity.getY() << endl;
+    cout << "velocity: " << velocity.getX() << "," << velocity.getY() << endl; // pourquoi ca s'affiche 2 fois dans le terminal??
 }
 
 /*Ball::Ball(const Vec2D &InitialPosition, const float BallRadius)
@@ -65,7 +52,7 @@ void Ball::setRadius(const float NewRadius)
     radius = NewRadius;
 }
 
-void Ball::bougeAuto(/*const Terrain &t*/)
+void Ball::bougeAuto()
 {
     setPosition(position += getVelocity());
 }

@@ -4,17 +4,17 @@
 
 Terrain::Terrain()
 {
-    dimx = 80;
-    dimy = 30;
-    for (int y = 0; y < dimy; y++)
+    dimX = 80;
+    dimY = 30;
+    for (int y = 0; y < dimX; y++) // peut on effectuer le dessin TXT hors de la classe Terrain??
     {
-        for (int x = 0; x < dimx; x++)
+        for (int x = 0; x < dimX; x++)
         {
-            if (y == 0 || y == dimy - 1)
+            if (y == 0 || y == dimX - 1)
             {
                 ter[x][y] = '_';
             }
-            else if ((x == 0 && y != 0 && y != dimy - 1) || (x == dimx - 1 && y != 0 && y != dimy - 1))
+            else if ((x == 0 && y != 0 && y != dimY - 1) || (x == dimX - 1 && y != 0 && y != dimY - 1))
             {
                 ter[x][y] = '|';
             }
@@ -28,31 +28,30 @@ Terrain::Terrain()
 
 bool Terrain::posEstValide(const int x, const int y) const
 {
-    std::cout << "Testing if " << y << "< " << dimy << std::endl;
-    return (x >= 0 && x < dimx && y >= 0 && y < dimy);
+    return (x >= 0 && x < dimX && y >= 0 && y < dimY);
 }
 
 int Terrain::getDimX() const
 {
-    return dimx;
+    return dimX;
 }
 
 int Terrain::getDimY() const
 {
-    return dimy;
+    return dimY;
 }
 
 char Terrain::getXY(const int x, const int y) const
 {
     assert(x >= 0);
     assert(y >= 0);
-    assert(x < dimx);
-    assert(y < dimy);
+    assert(x < dimX);
+    assert(y < dimX);
     return ter[x][y];
 }
 
 void Terrain::setDim(const int x, const int y)
 {
-    dimx = x;
-    dimy = y;
+    dimX = x;
+    dimY = y;
 }

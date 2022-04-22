@@ -10,8 +10,8 @@ using namespace std;
 const int WINDOW_WIDTH = 1200;
 const int WINDOW_HEIGHT = 800;
 
+// Dimensions objets
 const int BALL_SIZE = 8;
-
 const int PADDLE_HEIGHT = 80;
 const int PADDLE_WIDTH = 8;
 
@@ -26,17 +26,14 @@ void init(Jeu &jeu)
     Ball &Ball = jeu.getBall();
     Paddle &PaddleOne = jeu.getPaddleOne();
     Paddle &PaddleTwo = jeu.getPaddleTwo();
-    const Score &ScoreOne = jeu.getConstPlayerOneScore();
-    const Score &ScoreTwo = jeu.getConstPlayerTwoScore();
-
-    cout << "Terrain dimensions are [" << Terrain.getDimX() << "," << Terrain.getDimY() << "]" << endl;
+    const Score &ScoreOne = jeu.getConstPlayerOneScore(); // besoin ici?
+    const Score &ScoreTwo = jeu.getConstPlayerTwoScore(); // besoin ici?
 
     Terrain.setDim(WINDOW_WIDTH, WINDOW_HEIGHT);
-
-    cout << "Terrain dimensions are now [" << Terrain.getDimX() << "," << Terrain.getDimY() << "]" << endl;
+    cout << "WINDOW SIZE:" << WINDOW_WIDTH << "," << WINDOW_HEIGHT << endl;
     Ball.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
     PaddleOne.setPosition(Vec2D(10, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
-    PaddleTwo.setPosition(Vec2D(WINDOW_WIDTH - 10 - 1, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
+    PaddleTwo.setPosition(Vec2D(WINDOW_WIDTH - 10 - 7, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
 }
 
 sdlJeu::sdlJeu()
@@ -86,15 +83,16 @@ void sdlJeu::sdlAff(Jeu &jeu)
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 
     // Draw the net
-    for (int y = 0; y < WINDOW_HEIGHT; ++y)
+    for (int y = 0; y <= WINDOW_HEIGHT; ++y)
     {
-        if (y % 15)
+        if (y % 21)
         {
             SDL_RenderDrawPoint(renderer, WINDOW_WIDTH / 2, y);
+            SDL_RenderDrawPoint(renderer, (WINDOW_WIDTH / 2) - 1, y);
         }
     }
 
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 
     const Ball &Ball = jeu.getConstBall();
     const Paddle &PaddleOne = jeu.getConstPaddleOne();
@@ -108,10 +106,8 @@ void sdlJeu::sdlAff(Jeu &jeu)
     Balle.w = BALL_SIZE;
     Balle.h = BALL_SIZE;
     SDL_RenderFillRect(renderer, &Balle);
-    // cout << "Drawing Ball at coordinates [" << Balle.x << "," << Balle.y << "]" << endl;
 
     // Draw the Paddles
-
     PlayerOne.w = PADDLE_WIDTH;
     PlayerOne.h = PADDLE_HEIGHT;
     PlayerOne.x = PaddleOne.getPosition().x;
@@ -124,9 +120,6 @@ void sdlJeu::sdlAff(Jeu &jeu)
 
     SDL_RenderFillRect(renderer, &PlayerOne);
     SDL_RenderFillRect(renderer, &PlayerTwo);
-    // cout << "Drawing Paddle 1 at coordinates [" << PlayerOne.x << "," << PlayerOne.y << "]" << endl;
-    // cout << "Drawing Paddle 2 at coordinates [" << PlayerTwo.x << "," << PlayerTwo.y << "]" << endl;
-    cout << "Score: " << ScoreOne.getScore() << "-" << ScoreTwo.getScore() << endl;
 
     // FONTS
     // font = TTF_OpenFont("../../data/DejaVuSansCondensed.ttf", 50);
@@ -141,8 +134,8 @@ void sdlJeu::sdlAff(Jeu &jeu)
     font_color.r = 50;
     font_color.g = 50;
     font_color.b = 255;
-    // font_im.setSurface(TTF_RenderText_Solid(font, "Pacman", font_color));
-    // font_im.loadFromCurrentSurface(renderer);
+
+    // Draw the Score
 }
 
 void sdlJeu::sdlBoucle(Jeu &jeu)
@@ -165,7 +158,7 @@ void sdlJeu::sdlBoucle(Jeu &jeu)
             t = nt;
         }
 
-        // tant qu'il y a des evenements � traiter (cette boucle n'est pas bloquante)
+        // tant qu'il y a des evenements à traiter (cette boucle n'est pas bloquante)
         while (SDL_PollEvent(&events))
         {
             if (events.type == SDL_QUIT)
@@ -198,7 +191,7 @@ void sdlJeu::sdlBoucle(Jeu &jeu)
         // on affiche le jeu sur le buffer cache
         sdlAff(jeu);
 
-        // on permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans la boucle)
+        // on permute les deux buffers (une seule fois dans la boucle)
         SDL_RenderPresent(renderer);
     }
 }
