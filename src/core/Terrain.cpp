@@ -6,11 +6,11 @@ Terrain::Terrain()
 {
     dimX = 80;
     dimY = 30;
-    for (int y = 0; y < dimX; y++) // peut on effectuer le dessin TXT hors de la classe Terrain??
+    for (int y = 0; y < dimY; y++) // peut on effectuer le dessin TXT hors de la classe Terrain??
     {
         for (int x = 0; x < dimX; x++)
         {
-            if (y == 0 || y == dimX - 1)
+            if (y == 0 || y == dimY - 1)
             {
                 ter[x][y] = '_';
             }
