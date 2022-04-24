@@ -43,7 +43,12 @@ public:
     */
     char getXY(const int x, const int y) const;
 
-    void setDim(const int x, const int y);
+    /**
+    @brief Modifie les dimensions du terrain
+    @param x : largeur du terrain
+    @param y : hauteur du terrain
+    */
+    void setDimensions(const int x, const int y);
 };
 
 #endif

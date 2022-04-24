@@ -27,18 +27,9 @@ public:
     Paddle();
 
     /**
-     @brief <B>Construit</B> un objet Paddle.
-     Le constructeur definit la position choisit du paddle.
-    @param StartingPosition: position de depart
-    */
-    Paddle(const Rectangle StartingPosition);
-
-    /**
    @brief  R.
    */
     const Rectangle &getPosition() const;
-
-    void setPositionSize(const Rectangle NewPositionSize);
 
     /**
     @brief  Modifie la position de l'objet Paddle.

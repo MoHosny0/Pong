@@ -12,8 +12,8 @@ const int WINDOW_HEIGHT = 800;
 
 // Dimensions objets
 const int BALL_SIZE = 8;
-const int PADDLE_HEIGHT = 80;
 const int PADDLE_WIDTH = 8;
+const int PADDLE_HEIGHT = 80;
 
 float temps()
 {
@@ -29,8 +29,8 @@ void init(Jeu &jeu)
     const Score &ScoreOne = jeu.getConstPlayerOneScore(); // besoin ici?
     const Score &ScoreTwo = jeu.getConstPlayerTwoScore(); // besoin ici?
 
-    Terrain.setDim(WINDOW_WIDTH, WINDOW_HEIGHT);
-    cout << "WINDOW SIZE:" << WINDOW_WIDTH << "," << WINDOW_HEIGHT << endl;
+    Terrain.setDimensions(WINDOW_WIDTH, WINDOW_HEIGHT);
+    Ball.setRadius(BALL_SIZE);
     Ball.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
     PaddleOne.setPosition(Vec2D(10, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
     PaddleTwo.setPosition(Vec2D(WINDOW_WIDTH - 10 - 7, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
@@ -38,7 +38,6 @@ void init(Jeu &jeu)
 
 sdlJeu::sdlJeu()
 {
-
     // Initialisation de la SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
     {
@@ -76,7 +75,7 @@ sdlJeu::~sdlJeu()
 
 void sdlJeu::sdlAff(Jeu &jeu)
 {
-    // Remplir l'ecran de blanc
+    // Remplir l'écran en blanc
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
@@ -103,8 +102,8 @@ void sdlJeu::sdlAff(Jeu &jeu)
     // Draw the Ball
     Balle.x = Ball.getPosition().getX();
     Balle.y = Ball.getPosition().getY();
-    Balle.w = BALL_SIZE;
-    Balle.h = BALL_SIZE;
+    Balle.w = Ball.getRadius();
+    Balle.h = Ball.getRadius();
     SDL_RenderFillRect(renderer, &Balle);
 
     // Draw the Paddles

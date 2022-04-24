@@ -2,32 +2,29 @@
 #define SCORE_H
 
 /**
-    @brief Un score int. 
+    @brief Un score int.
 */
 
-class Score 
+class Score
 {
-    private:
-        int score;
+private:
+    int score;
 
-    public:
-        /**
-        @brief Construct du score. 
-        */
-        Score();
+public:
+    /**
+    @brief Construct du score.
+    */
+    Score();
 
-        /**
-        @brief Accesseur de score int
-        */
-        const int getScore() const;
+    /**
+    @brief Accesseur de score int
+    */
+    const int getScore() const;
 
-        /**
-        @brief Mutateur du score. 
-        */
-        void setScore();
-        
+    /**
+    @brief Mutateur du score.
+    */
+    void setScore();
 };
-
-
 
 #endif

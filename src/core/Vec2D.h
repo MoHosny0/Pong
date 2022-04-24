@@ -51,14 +51,5 @@ public:
     */
     float getY() const;
 
-    /**
-    @brief  Donne une valeur à l'abscisse du vectur.
-    */
-    void setX(const float x_);
-
-    /**
-    @brief  Donne une valeur à l'ordonnée du vecteur.
-    */
-    void setY(const float y_);
 };
 #endif

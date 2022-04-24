@@ -50,7 +50,7 @@ char Terrain::getXY(const int x, const int y) const
     return ter[x][y];
 }
 
-void Terrain::setDim(const int x, const int y)
+void Terrain::setDimensions(const int x, const int y)
 {
     dimX = x;
     dimY = y;

@@ -82,7 +82,7 @@ void init(Jeu &jeu)
 	Paddle &PaddleOne = jeu.getPaddleOne();
 	Paddle &PaddleTwo = jeu.getPaddleTwo();
 
-	Terrain.setDim(TERR_WIDTH, TERR_HEIGHT);
+	Terrain.setDimensions(TERR_WIDTH, TERR_HEIGHT);
 	Ball.setPosition(Vec2D(TERR_WIDTH / 2, TERR_HEIGHT / 2));
 	PaddleOne.setPosition(Vec2D(2, (TERR_HEIGHT / 2) - (PADD_HEIGHT / 2)));
 	PaddleTwo.setPosition(Vec2D(TERR_WIDTH - 2 - PADD_WIDTH, (TERR_HEIGHT / 2) - (PADD_HEIGHT / 2)));
