@@ -25,7 +25,7 @@ const int TERR_WIDTH = 80;
 const int TERR_HEIGHT = 30;
 
 const int PADD_WIDTH = 2;
-const int PADD_HEIGHT = 5;
+const int PADD_HEIGHT = 20;
 
 void txtClear()
 {
@@ -69,8 +69,8 @@ void affiche(WinTXT &win, Jeu &jeu)
 	win.print(1, 0, CharScoreTwo);
 
 	// Affichage des paddles
-	win.printPaddle(PaddleOne.getPosition().x, PaddleOne.getPosition().y, PADD_WIDTH, PADD_HEIGHT, '#');
-	win.printPaddle(PaddleTwo.getPosition().x, PaddleTwo.getPosition().y, PADD_WIDTH, PADD_HEIGHT, '#');
+	win.printPaddle(PaddleOne.getPosition().x, PaddleOne.getPosition().y, PaddleOne.getPosition().width, PaddleOne.getPosition().height, '#');
+	win.printPaddle(PaddleTwo.getPosition().x, PaddleTwo.getPosition().y, PaddleTwo.getPosition().width, PaddleTwo.getPosition().height, '#');
 
 	win.draw();
 }
@@ -85,7 +85,10 @@ void init(Jeu &jeu)
 	Terrain.setDimensions(TERR_WIDTH, TERR_HEIGHT);
 	Ball.setPosition(Vec2D(TERR_WIDTH / 2, TERR_HEIGHT / 2));
 	PaddleOne.setPosition(Vec2D(2, (TERR_HEIGHT / 2) - (PADD_HEIGHT / 2)));
+	PaddleOne.setDimension(PADD_WIDTH, PADD_HEIGHT);
+
 	PaddleTwo.setPosition(Vec2D(TERR_WIDTH - 2 - PADD_WIDTH, (TERR_HEIGHT / 2) - (PADD_HEIGHT / 2)));
+	PaddleTwo.setDimension(PADD_WIDTH, PADD_HEIGHT);
 }
 
 void boucle(Jeu &jeu)

@@ -57,6 +57,7 @@ void Jeu::collisions() // accourcir les nom de variables, lignes trop longues.
     if ((ballHorizontal > paddleOneHorizontal) && (ballHorizontal < (paddleOneHorizontal + paddleOneWidth)) && (ballVertical > paddleOneVertical) && (ballVertical < (paddleOneVertical + paddleOneHeight)))
     {
         ball.setVelocity(Vec2D(-ballVectorX, ballVectorY));
+        cout << "x = " << paddleOneHorizontal << " y = " << paddleOneVertical << " width = " << paddleOneWidth << " height = " << paddleOneHeight << endl;
     }
 
     if ((ballHorizontal > (WINDOW_WIDTH - paddleTwoHorizontal - paddleTwoWidth)) && (ballHorizontal < (WINDOW_WIDTH - paddleTwoHorizontal)) && (ballVertical > paddleTwoVertical) && (ballVertical < (paddleTwoVertical + paddleTwoHeight)))
@@ -76,6 +77,9 @@ void Jeu::perdu()
     // cout << "Terrain Dim Y: " << WINDOW_HEIGHT << endl;
     // cout << "Ball Horizontal Position:" << ballPosition << endl;
 
+    int FLOAT_MIN = -1;
+    int FLOAT_MAX = 1;
+
     float randOne;
     float randTwo;
 
@@ -86,7 +90,7 @@ void Jeu::perdu()
 
         do
         {
-            randOne = ((rand()) / ((RAND_MAX / 3)) - 1);
+            randOne = FLOAT_MIN + (float)(rand()) / ((float)(RAND_MAX/(FLOAT_MAX - FLOAT_MIN)));
             if (randOne < 0)
                 randOne = -randOne;
 
@@ -94,11 +98,11 @@ void Jeu::perdu()
 
         do
         {
-            randTwo = ((rand()) / ((RAND_MAX / 3)) - 1);
+            randTwo = FLOAT_MIN + (float)(rand()) / ((float)(RAND_MAX/(FLOAT_MAX - FLOAT_MIN)));
         } while (randTwo == 0);
 
-        ball.setVelocity(Vec2D(randOne, randTwo));
-        // cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
+        ball.setVelocity(Vec2D(/*randOne, randTwo*/1,0));
+        cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
         PlayerTwoScore.setScore();
     }
 
@@ -109,7 +113,7 @@ void Jeu::perdu()
 
         do
         {
-            randOne = ((rand()) / ((RAND_MAX / 3)) - 1);
+            randOne = FLOAT_MIN + (float)(rand()) / ((float)(RAND_MAX/(FLOAT_MAX - FLOAT_MIN)));
             if (randOne > 0)
                 randOne = -randOne;
 
@@ -117,11 +121,11 @@ void Jeu::perdu()
 
         do
         {
-            randTwo = ((rand()) / ((RAND_MAX / 3)) - 1);
+            randTwo = FLOAT_MIN + (float)(rand()) / ((float)(RAND_MAX/(FLOAT_MAX - FLOAT_MIN)));
         } while (randTwo == 0);
 
-        ball.setVelocity(Vec2D(randOne, randTwo));
-        // cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
+        ball.setVelocity(Vec2D(/*randOne, randTwo*/-1,0));
+        cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
         PlayerOneScore.setScore();
     }
 }

@@ -20,7 +20,7 @@ Terrain::Terrain()
             }
             else
             {
-                ter[x][y] = '.';
+                ter[x][y] = ' ';
             }
         }
     }
