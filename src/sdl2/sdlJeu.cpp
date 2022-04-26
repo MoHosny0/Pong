@@ -13,7 +13,7 @@ const int WINDOW_HEIGHT = 800;
 // Dimensions objets
 const int BALL_SIZE = 8;
 const int PADDLE_WIDTH = 8;
-const int PADDLE_HEIGHT = 80;
+const int PADDLE_HEIGHT = 81;
 
 float temps()
 {
@@ -30,10 +30,13 @@ void init(Jeu &jeu)
     const Score &ScoreTwo = jeu.getConstPlayerTwoScore(); // besoin ici?
 
     Terrain.setDimensions(WINDOW_WIDTH, WINDOW_HEIGHT);
+    // cout << Terrain.getDimX() << " " << Terrain.getDimY() << endl;
     Ball.setRadius(BALL_SIZE);
     Ball.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
     PaddleOne.setPosition(Vec2D(10, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
+    PaddleOne.setDimension(PADDLE_WIDTH, PADDLE_HEIGHT);
     PaddleTwo.setPosition(Vec2D(WINDOW_WIDTH - 10 - 7, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
+    PaddleTwo.setDimension(PADDLE_WIDTH, PADDLE_HEIGHT);
 }
 
 sdlJeu::sdlJeu()
@@ -99,6 +102,8 @@ void sdlJeu::sdlAff(Jeu &jeu)
     const Score &ScoreOne = jeu.getConstPlayerOneScore();
     const Score &ScoreTwo = jeu.getConstPlayerTwoScore();
 
+    SDL_Rect Balle, PlayerOne, PlayerTwo;
+
     // Draw the Ball
     Balle.x = Ball.getPosition().getX();
     Balle.y = Ball.getPosition().getY();
@@ -107,15 +112,16 @@ void sdlJeu::sdlAff(Jeu &jeu)
     SDL_RenderFillRect(renderer, &Balle);
 
     // Draw the Paddles
-    PlayerOne.w = PADDLE_WIDTH;
-    PlayerOne.h = PADDLE_HEIGHT;
+    PlayerOne.w = PaddleOne.getPosition().width;
+    PlayerOne.h = PaddleOne.getPosition().height;
     PlayerOne.x = PaddleOne.getPosition().x;
     PlayerOne.y = PaddleOne.getPosition().y;
 
-    PlayerTwo.w = PADDLE_WIDTH;
-    PlayerTwo.h = PADDLE_HEIGHT;
+    PlayerTwo.w = PaddleTwo.getPosition().width;
+    PlayerTwo.h = PaddleTwo.getPosition().height;
     PlayerTwo.x = PaddleTwo.getPosition().x;
     PlayerTwo.y = PaddleTwo.getPosition().y;
+
 
     SDL_RenderFillRect(renderer, &PlayerOne);
     SDL_RenderFillRect(renderer, &PlayerTwo);
@@ -151,7 +157,7 @@ void sdlJeu::sdlBoucle(Jeu &jeu)
     {
 
         nt = SDL_GetTicks();
-        if (nt - t > 1)
+        // if (nt - t > 1)
         {
             jeu.actionsAutomatiques();
             t = nt;

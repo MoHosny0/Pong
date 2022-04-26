@@ -25,9 +25,13 @@ void Jeu::collisions() // accourcir les nom de variables, lignes trop longues.
 
     float paddleOneHorizontal = PlayerOne.getPosition().x;
     float paddleOneVertical = PlayerOne.getPosition().y;
+    float paddleOneHeight = PlayerOne.getPosition().height;
+    float paddleOneWidth = PlayerOne.getPosition().width;
 
     float paddleTwoHorizontal = PlayerTwo.getPosition().x;
     float paddleTwoVertical = PlayerTwo.getPosition().y;
+    float paddleTwoHeight = PlayerTwo.getPosition().height;
+    float paddleTwoWidth = PlayerTwo.getPosition().width;
 
     float ballVectorX = ball.getVelocity().getX();
     float ballVectorY = ball.getVelocity().getY();
@@ -50,12 +54,12 @@ void Jeu::collisions() // accourcir les nom de variables, lignes trop longues.
     }
 
     // collisions avec paddles
-    if ((ballHorizontal > paddleOneHorizontal) && (ballHorizontal < (paddleOneHorizontal + PADDLE_WIDTH)) && (ballVertical > paddleOneVertical) && (ballVertical < (paddleOneVertical + PADDLE_HEIGHT)))
+    if ((ballHorizontal > paddleOneHorizontal) && (ballHorizontal < (paddleOneHorizontal + paddleOneWidth)) && (ballVertical > paddleOneVertical) && (ballVertical < (paddleOneVertical + paddleOneHeight)))
     {
         ball.setVelocity(Vec2D(-ballVectorX, ballVectorY));
     }
 
-    if ((ballHorizontal > (WINDOW_WIDTH - paddleTwoHorizontal - 5)) && (ballHorizontal < (WINDOW_WIDTH - paddleTwoHorizontal)) && (ballVertical > paddleTwoVertical) && (ballVertical < (paddleTwoVertical + 5)))
+    if ((ballHorizontal > (WINDOW_WIDTH - paddleTwoHorizontal - paddleTwoWidth)) && (ballHorizontal < (WINDOW_WIDTH - paddleTwoHorizontal)) && (ballVertical > paddleTwoVertical) && (ballVertical < (paddleTwoVertical + paddleTwoHeight)))
     {
         ball.setVelocity(Vec2D(-ballVectorX, ballVectorY));
     }

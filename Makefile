@@ -1,4 +1,4 @@
-SDL = -lSDL2
+SDL = -lSDL2 
 _OBJ_CORE = Jeu.o Vec2D.o Terrain.o Ball.o Paddle.o Score.o
 OBJ_CORE = $(patsubst %,obj/core/%,$(_OBJ_CORE))
 

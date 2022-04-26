@@ -19,7 +19,7 @@ private:
 
 public:
     /**
-    @brief Met en place un terrain, la balle, les  paddles et le score des joueurs.
+    @brief Met en place un terrain, la balle, les paddles et le score des joueurs.
     */
     Jeu();
 

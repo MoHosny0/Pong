@@ -8,6 +8,8 @@ struct Rectangle
 {
     float x;
     float y;
+    int height;
+    int width;
 };
 
 /**
@@ -48,6 +50,10 @@ public:
    @param T: Terrain dans lequel Paddle bouge.
    */
     void bas(const Terrain &T);
+
+
+    void setDimension(const int x, const int y);
+
 };
 
 #endif
