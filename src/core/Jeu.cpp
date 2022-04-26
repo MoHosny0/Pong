@@ -36,21 +36,21 @@ void Jeu::collisions() // accourcir les nom de variables, lignes trop longues.
     float WINDOW_HEIGHT = terrain.getDimY();
 
     // collisions avec murs gauche et droite
-    if ((ballHorizontal == 1.0) || (ballHorizontal == WINDOW_WIDTH - 1))
+    if ((ballHorizontal <= 1.0) || (ballHorizontal >= WINDOW_WIDTH - 1))
     {
         // std::cout << "Ball touched wall at " << ballHorizontal << std::endl;
         ball.setVelocity(Vec2D(-ballVectorX, ballVectorY));
     }
 
     // collisions avec murs haut et bas
-    if ((ballVertical == 1.0) || (ballVertical == WINDOW_HEIGHT - 1))
+    if ((ballVertical <= 1.0) || (ballVertical >= WINDOW_HEIGHT - 1))
     {
 
         ball.setVelocity(Vec2D(ballVectorX, -ballVectorY));
     }
 
     // collisions avec paddles
-    if ((ballHorizontal > paddleOneHorizontal) && (ballHorizontal < (paddleOneHorizontal + 4)) && (ballVertical > paddleOneVertical) && (ballVertical < (paddleOneVertical + 5)))
+    if ((ballHorizontal > paddleOneHorizontal) && (ballHorizontal < (paddleOneHorizontal + PADDLE_WIDTH)) && (ballVertical > paddleOneVertical) && (ballVertical < (paddleOneVertical + PADDLE_HEIGHT)))
     {
         ball.setVelocity(Vec2D(-ballVectorX, ballVectorY));
     }
@@ -76,7 +76,7 @@ void Jeu::perdu()
     float randTwo;
 
     // but à gauche
-    if (ballPosition == 1.0)
+    if (ballPosition <= 1.0)
     {
         ball.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)); // Devrait etre WINDOW_HEIGHT ET WIDTH COMME SDLJEU.CPP
 
@@ -99,7 +99,7 @@ void Jeu::perdu()
     }
 
     // collisions avec murs droite
-    else if (ballPosition == WINDOW_WIDTH - 1)
+    else if (ballPosition >= WINDOW_WIDTH - 1)
     {
         ball.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
 

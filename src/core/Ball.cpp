@@ -12,14 +12,19 @@ Ball::Ball()
     float r1; // change name
     float r2; // change name
 
-    do
-    {
-        r1 = ((rand()) / ((RAND_MAX / 3)) - 1);
-    } while (r1 == 0);
+    int FLOAT_MIN = -1;
+    int FLOAT_MAX = 1;
 
     do
     {
-        r2 = ((rand()) / ((RAND_MAX / 3)) - 1);
+        r1 = FLOAT_MIN + (float)(rand()) / ((float)(RAND_MAX/(FLOAT_MAX - FLOAT_MIN)));
+        // r1 = ((rand()) / ((RAND_MAX / 3)) - 1);
+    } while (r1 == 0);
+
+    do
+    {   
+        r2 = FLOAT_MIN + (float)(rand()) / ((float)(RAND_MAX/(FLOAT_MAX - FLOAT_MIN)));
+        // r2 = ((rand()) / ((RAND_MAX / 3)) - 1);
     } while (r2 == 0);
 
     velocity = Vec2D(r1, r2);
