@@ -38,13 +38,7 @@ void Jeu::collisions() // accourcir les nom de variables, lignes trop longues.
 
     float WINDOW_WIDTH = terrain.getDimX();
     float WINDOW_HEIGHT = terrain.getDimY();
-
-    // collisions avec murs gauche et droite
-    if ((ballHorizontal <= 1.0) || (ballHorizontal >= WINDOW_WIDTH - 1))
-    {
-        // std::cout << "Ball touched wall at " << ballHorizontal << std::endl;
-        ball.setVelocity(Vec2D(-ballVectorX, ballVectorY));
-    }
+    
 
     // collisions avec murs haut et bas
     if ((ballVertical <= 1.0) || (ballVertical >= WINDOW_HEIGHT - 1))
@@ -60,8 +54,9 @@ void Jeu::collisions() // accourcir les nom de variables, lignes trop longues.
         cout << "x = " << paddleOneHorizontal << " y = " << paddleOneVertical << " width = " << paddleOneWidth << " height = " << paddleOneHeight << endl;
     }
 
-    if ((ballHorizontal > (WINDOW_WIDTH - paddleTwoHorizontal - paddleTwoWidth)) && (ballHorizontal < (WINDOW_WIDTH - paddleTwoHorizontal)) && (ballVertical > paddleTwoVertical) && (ballVertical < (paddleTwoVertical + paddleTwoHeight)))
+    if ((ballHorizontal > (paddleTwoHorizontal-1)) && (ballHorizontal < (paddleTwoHorizontal+paddleTwoWidth)) && (ballVertical > paddleTwoVertical) && (ballVertical < (paddleTwoVertical + paddleTwoHeight)))
     {
+        cout << "x = " << paddleTwoHorizontal << " y = " << paddleTwoVertical << " width = " << paddleTwoWidth << " height = " << paddleTwoHeight << endl;
         ball.setVelocity(Vec2D(-ballVectorX, ballVectorY));
     }
 }
@@ -72,10 +67,6 @@ void Jeu::perdu()
     int WINDOW_WIDTH = terrain.getDimX();
     int WINDOW_HEIGHT = terrain.getDimY();
     float ballPosition = ball.getPosition().getX();
-
-    // cout << "Terrain Dim X: " << WINDOW_WIDTH << endl;
-    // cout << "Terrain Dim Y: " << WINDOW_HEIGHT << endl;
-    // cout << "Ball Horizontal Position:" << ballPosition << endl;
 
     int FLOAT_MIN = -1;
     int FLOAT_MAX = 1;
