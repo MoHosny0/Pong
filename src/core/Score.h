@@ -12,7 +12,7 @@ private:
 
 public:
     /**
-    @brief Construct du score.
+    @brief Constructeur du score.
     */
     Score();
 

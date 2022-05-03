@@ -1,4 +1,4 @@
-SDL = -lSDL2 
+SDL = -lSDL2 -lSDL_ttf
 _OBJ_CORE = Jeu.o Vec2D.o Terrain.o Ball.o Paddle.o Score.o
 OBJ_CORE = $(patsubst %,obj/core/%,$(_OBJ_CORE))
 
@@ -54,8 +54,8 @@ obj/txt/%.o: src/txt/%.cpp
 	${GPP_O} -o $@ $< 
 
 
-# docu: doc/pacman.doxy
-# 	cd doc ; doxygen pacman.doxy
+docu: doc/pacman.doxy
+	cd doc ; doxygen pong.doxy
 
 clean:
 ifeq ($(OS),Windows_NT)
