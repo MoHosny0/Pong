@@ -92,7 +92,7 @@ void Jeu::perdu()
             randTwo = FLOAT_MIN + (float)(rand()) / ((float)(RAND_MAX/(FLOAT_MAX - FLOAT_MIN)));
         } while (randTwo == 0);
 
-        ball.setVelocity(Vec2D(/*randOne, randTwo*/1,0));
+        ball.setVelocity(Vec2D(randOne, randTwo));
         cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
         PlayerTwoScore.setScore();
     }
@@ -115,7 +115,7 @@ void Jeu::perdu()
             randTwo = FLOAT_MIN + (float)(rand()) / ((float)(RAND_MAX/(FLOAT_MAX - FLOAT_MIN)));
         } while (randTwo == 0);
 
-        ball.setVelocity(Vec2D(/*randOne, randTwo*/-1,0));
+        ball.setVelocity(Vec2D(randOne, randTwo));
         cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
         PlayerOneScore.setScore();
     }
@@ -135,11 +135,11 @@ void Jeu::actionClavier(const char touche)
     switch (touche)
     {
     case 'q':
-        PlayerOne.haut(terrain);
+        PlayerOne.bas(terrain);
         break;
 
     case 'a':
-        PlayerOne.bas(terrain);
+        PlayerOne.haut(terrain);
         break;
 
     case 'p':

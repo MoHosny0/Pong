@@ -10,6 +10,7 @@ struct Rectangle
     float y;
     int height;
     int width;
+    int speed;
 };
 
 /**
@@ -54,6 +55,7 @@ public:
 
     void setDimension(const int x, const int y);
 
+    void setSpeed(const int x);
 };
 
 #endif

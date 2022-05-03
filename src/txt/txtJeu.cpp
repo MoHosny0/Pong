@@ -25,7 +25,7 @@ const int TERR_WIDTH = 80;
 const int TERR_HEIGHT = 30;
 
 const int PADD_WIDTH = 2;
-const int PADD_HEIGHT = 20;
+const int PADD_HEIGHT = 5;
 
 void txtClear()
 {

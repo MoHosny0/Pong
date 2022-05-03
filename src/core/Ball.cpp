@@ -39,4 +39,14 @@ void Ball::setPosition(const Vec2D &NewPosition) { position = NewPosition; }
 void Ball::setVelocity(const Vec2D &NewVelocity) { velocity = NewVelocity; }
 void Ball::setRadius(const float NewRadius) { radius = NewRadius; }
 
-void Ball::bougeAuto() { setPosition(position += getVelocity()); }
+void Ball::bougeAuto() { 
+    
+    // float posx = getPosition().getX() + getVelocity().getX();
+
+    // float posy = getPosition().getY() + getVelocity().getY();
+    
+    // setPosition(Vec2D(posx+2, posy+2));
+
+    
+    setPosition(position += getVelocity()); 
+}
