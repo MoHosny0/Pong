@@ -4,6 +4,10 @@
 #include "Vec2D.h"
 #include "Terrain.h"
 
+/**
+ * @brief Un rectangle symbolisant le paddle
+ * 
+ */
 struct Rectangle
 {
     float x;
@@ -30,7 +34,8 @@ public:
     Paddle();
 
     /**
-   @brief  R.
+   @brief  Renvoie la position du rectangle
+   @return un rectangle
    */
     const Rectangle &getPosition() const;
 
