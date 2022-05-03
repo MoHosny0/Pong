@@ -26,6 +26,7 @@ const int TERR_HEIGHT = 30;
 
 const int PADD_WIDTH = 2;
 const int PADD_HEIGHT = 5;
+const int PADD_SPEED = 1;
 
 void txtClear()
 {
@@ -89,6 +90,9 @@ void init(Jeu &jeu)
 
 	PaddleTwo.setPosition(Vec2D(TERR_WIDTH - 2 - PADD_WIDTH, (TERR_HEIGHT / 2) - (PADD_HEIGHT / 2)));
 	PaddleTwo.setDimension(PADD_WIDTH, PADD_HEIGHT);
+
+	PaddleOne.setSpeed(PADD_SPEED);
+	PaddleTwo.setSpeed(PADD_SPEED);
 }
 
 void boucle(Jeu &jeu)

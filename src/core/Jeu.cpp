@@ -51,12 +51,12 @@ void Jeu::collisions() // accourcir les nom de variables, lignes trop longues.
     if ((ballHorizontal > paddleOneHorizontal) && (ballHorizontal < (paddleOneHorizontal + paddleOneWidth)) && (ballVertical > paddleOneVertical) && (ballVertical < (paddleOneVertical + paddleOneHeight)))
     {
         ball.setVelocity(Vec2D(-ballVectorX, ballVectorY));
-        cout << "x = " << paddleOneHorizontal << " y = " << paddleOneVertical << " width = " << paddleOneWidth << " height = " << paddleOneHeight << endl;
+        // cout << "x = " << paddleOneHorizontal << " y = " << paddleOneVertical << " width = " << paddleOneWidth << " height = " << paddleOneHeight << endl;
     }
 
     if ((ballHorizontal > (paddleTwoHorizontal-1)) && (ballHorizontal < (paddleTwoHorizontal+paddleTwoWidth)) && (ballVertical > paddleTwoVertical) && (ballVertical < (paddleTwoVertical + paddleTwoHeight)))
     {
-        cout << "x = " << paddleTwoHorizontal << " y = " << paddleTwoVertical << " width = " << paddleTwoWidth << " height = " << paddleTwoHeight << endl;
+        // cout << "x = " << paddleTwoHorizontal << " y = " << paddleTwoVertical << " width = " << paddleTwoWidth << " height = " << paddleTwoHeight << endl;
         ball.setVelocity(Vec2D(-ballVectorX, ballVectorY));
     }
 }
@@ -93,7 +93,7 @@ void Jeu::perdu()
         } while (randTwo == 0);
 
         ball.setVelocity(Vec2D(randOne, randTwo));
-        cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
+        // cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
         PlayerTwoScore.setScore();
     }
 
@@ -116,7 +116,7 @@ void Jeu::perdu()
         } while (randTwo == 0);
 
         ball.setVelocity(Vec2D(randOne, randTwo));
-        cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
+        // cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
         PlayerOneScore.setScore();
     }
 }

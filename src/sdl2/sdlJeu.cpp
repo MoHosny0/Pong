@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include "sdlJeu.h"
-#include <SDL/SDL_ttf.h>
+// #include <SDL/SDL_ttf.h>
 using namespace std;
 
 // Dimensions SDL
@@ -14,6 +14,7 @@ const int WINDOW_HEIGHT = 800;
 const int BALL_SIZE = 8;
 const int PADDLE_WIDTH = 8;
 const int PADDLE_HEIGHT = 81;
+const int PADDLE_SPEED = 3;
 
 float temps()
 {
@@ -35,8 +36,11 @@ void init(Jeu &jeu)
     Ball.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
     PaddleOne.setPosition(Vec2D(10, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
     PaddleOne.setDimension(PADDLE_WIDTH, PADDLE_HEIGHT);
+    PaddleOne.setSpeed(PADDLE_SPEED);
+
     PaddleTwo.setPosition(Vec2D(WINDOW_WIDTH - 10 - 7, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
     PaddleTwo.setDimension(PADDLE_WIDTH, PADDLE_HEIGHT);
+    PaddleTwo.setSpeed(PADDLE_SPEED);
 }
 
 sdlJeu::sdlJeu()
@@ -157,7 +161,7 @@ void sdlJeu::sdlBoucle(Jeu &jeu)
     {
 
         nt = SDL_GetTicks();
-        // if (nt - t > 1)
+        if (nt - t > 1)
         {
             jeu.actionsAutomatiques();
             t = nt;
