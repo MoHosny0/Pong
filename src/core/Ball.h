@@ -26,11 +26,13 @@ public:
 
     /**
     @brief  Renvoie un vec2D contenent la position de l'objet Ball.
+    @return un Vec2D '
     */
     const Vec2D &getPosition() const;
 
     /**
     @brief  Renvoie un vec2D contenent la vitesse de l'objet Ball.
+    @return un Vec2D 
     */
     const Vec2D &getVelocity() const;
 
