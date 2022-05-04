@@ -19,3 +19,5 @@
 - verifier que la balle respawn au milieu du terrain
 - reverifier collisions encore une fois (pourquoi 1 et -1 seulement?)
 - il est ou pong.doxy dans doc/ ?
+
+- mettre en place SDL_ttf 

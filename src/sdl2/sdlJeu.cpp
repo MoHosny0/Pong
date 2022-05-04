@@ -142,7 +142,7 @@ void sdlJeu::sdlAff(Jeu &jeu)
         SDL_Quit();
         exit(1);
     }
-    cout << "APRES FONTS" << endl;
+    // cout << "APRES FONTS" << endl;
     font_color.r = 50;
     font_color.g = 50;
     font_color.b = 255;
