@@ -54,8 +54,8 @@ obj/txt/%.o: src/txt/%.cpp
 	${GPP_O} -o $@ $< 
 
 
-docu: doc/pacman.doxy
-	cd doc ; doxygen pong.doxy
+doc: doc/pong.doxy
+	doxygen doc/pong.doxy
 
 clean:
 ifeq ($(OS),Windows_NT)

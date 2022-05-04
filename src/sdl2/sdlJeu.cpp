@@ -6,95 +6,6 @@
 // #include <SDL/SDL_ttf.h>
 using namespace std;
 
-float temps()
-{
-    return float(SDL_GetTicks()) / CLOCKS_PER_SEC; // conversion des ms en secondes en divisant par 1000
-}
-// ============= CLASS IMAGE =============== //
-
-// Image::Image() : m_surface(nullptr), m_texture(nullptr), m_hasChanged(false)
-// {
-// }
-
-// Image::~Image()
-// {
-//     SDL_FreeSurface(m_surface);
-//     SDL_DestroyTexture(m_texture);
-
-//     m_surface = nullptr;
-//     m_texture = nullptr;
-//     m_hasChanged = false;
-// }
-
-// void Image::loadFromFile(const char *filename, SDL_Renderer *renderer)
-// {
-//     m_surface = IMG_Load(filename);
-//     if (m_surface == nullptr)
-//     {
-//         string nfn = string("../") + filename;
-//         cout << "Error: cannot load " << filename << ". Trying " << nfn << endl;
-//         m_surface = IMG_Load(nfn.c_str());
-//         if (m_surface == nullptr)
-//         {
-//             nfn = string("../") + nfn;
-//             m_surface = IMG_Load(nfn.c_str());
-//         }
-//     }
-//     if (m_surface == nullptr)
-//     {
-//         cout << "Error: cannot load " << filename << endl;
-//         SDL_Quit();
-//         exit(1);
-//     }
-
-//     SDL_Surface *surfaceCorrectPixelFormat = SDL_ConvertSurfaceFormat(m_surface, SDL_PIXELFORMAT_ARGB8888, 0);
-//     SDL_FreeSurface(m_surface);
-//     m_surface = surfaceCorrectPixelFormat;
-
-//     m_texture = SDL_CreateTextureFromSurface(renderer, surfaceCorrectPixelFormat);
-//     if (m_texture == NULL)
-//     {
-//         cout << "Error: problem to create the texture of " << filename << endl;
-//         SDL_Quit();
-//         exit(1);
-//     }
-// }
-
-// void Image::loadFromCurrentSurface(SDL_Renderer *renderer)
-// {
-//     m_texture = SDL_CreateTextureFromSurface(renderer, m_surface);
-//     if (m_texture == nullptr)
-//     {
-//         cout << "Error: problem to create the texture from surface " << endl;
-//         SDL_Quit();
-//         exit(1);
-//     }
-// }
-
-// void Image::draw(SDL_Renderer *renderer, int x, int y, int w, int h)
-// {
-//     int ok;
-//     SDL_Rect r;
-//     r.x = x;
-//     r.y = y;
-//     r.w = (w < 0) ? m_surface->w : w;
-//     r.h = (h < 0) ? m_surface->h : h;
-
-//     if (m_hasChanged)
-//     {
-//         ok = SDL_UpdateTexture(m_texture, nullptr, m_surface->pixels, m_surface->pitch);
-//         assert(ok == 0);
-//         m_hasChanged = false;
-//     }
-
-//     ok = SDL_RenderCopy(renderer, m_texture, nullptr, &r);
-//     assert(ok == 0);
-// }
-
-// SDL_Texture *Image::getTexture() const { return m_texture; }
-
-// void Image::setSurface(SDL_Surface *surf) { m_surface = surf; }
-
 // Dimensions SDL
 const int WINDOW_WIDTH = 1200;
 const int WINDOW_HEIGHT = 800;
@@ -104,6 +15,11 @@ const int BALL_SIZE = 8;
 const int PADDLE_WIDTH = 8;
 const int PADDLE_HEIGHT = 81;
 const int PADDLE_SPEED = 3;
+
+float temps()
+{
+    return float(SDL_GetTicks()) / CLOCKS_PER_SEC; // conversion des ms en secondes en divisant par 1000
+}
 
 void init(Jeu &jeu)
 {
@@ -210,6 +126,7 @@ void sdlJeu::sdlAff(Jeu &jeu)
     PlayerTwo.x = PaddleTwo.getPosition().x;
     PlayerTwo.y = PaddleTwo.getPosition().y;
 
+
     SDL_RenderFillRect(renderer, &PlayerOne);
     SDL_RenderFillRect(renderer, &PlayerTwo);
 
@@ -229,19 +146,6 @@ void sdlJeu::sdlAff(Jeu &jeu)
     font_color.r = 50;
     font_color.g = 50;
     font_color.b = 255;
-
-    SDL_Surface *surface = TTF_RenderText_Solid(font,
-                                                "Welcome to Gigi Labs", font_color);
-    cout << "APRES SURFACE" << endl;
-    cout << renderer << " " << surface << endl;
-    cout << surface->w << " " << surface->h << endl;
-
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
-    cout << texture << endl;
-    cout << "APRES TEXTURE" << endl;
-
-    SDL_RenderCopy(renderer, texture, NULL, NULL);
-    SDL_RenderPresent(renderer);
 
     // Draw the Score
 }
