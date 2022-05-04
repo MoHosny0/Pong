@@ -218,7 +218,7 @@ void sdlJeu::sdlAff(Jeu &jeu)
     if (font == NULL)
         font = TTF_OpenFont("../data/DejaVuSansCondensed.ttf", 50);
     if (font == NULL)
-        font = TTF_OpenFont("/data/DejaVuSansCondensed.ttf", 50);
+        font = TTF_OpenFont("data/DejaVuSansCondensed.ttf", 50);
     if (font == NULL)
     {
         cout << "Failed to load DejaVuSansCondensed.ttf! SDL_TTF Error: " << TTF_GetError() << endl;
