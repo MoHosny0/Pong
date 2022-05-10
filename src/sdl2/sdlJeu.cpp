@@ -15,14 +15,20 @@ const int BALL_SIZE = 8;
 const int PADDLE_WIDTH = 8;
 const int PADDLE_HEIGHT = 81;
 const int PADDLE_SPEED = 3;
-
+/**
+ * @brief Calcule le nombre de secondes depuis le début du programme.
+ * @return seconde
+ * 
+ */
 float temps()
 {
-    return float(SDL_GetTicks()) / CLOCKS_PER_SEC; // conversion des ms en secondes en divisant par 1000
+    return float(SDL_GetTicks()) / CLOCKS_PER_SEC * 1000; // conversion des ms en secondes en divisant par 1000
 }
 
 void init(Jeu &jeu)
 {
+
+    cout << temps() << endl;
     Terrain &Terrain = jeu.getTerrain();
 
     Ball &Ball1 = jeu.getBall1();
@@ -126,11 +132,11 @@ void sdlJeu::sdlAff(Jeu &jeu)
     SDL_Rect Balle1, Balle2, PlayerOne, PlayerTwo;
 
     // Draw the Ball1
-    // Balle1.x = Ball1.getPosition().getX();
-    // Balle1.y = Ball1.getPosition().getY();
-    // Balle1.w = Ball1.getRadius();
-    // Balle1.h = Ball1.getRadius();
-    // SDL_RenderFillRect(renderer, &Balle1);
+    Balle1.x = Ball1.getPosition().getX();
+    Balle1.y = Ball1.getPosition().getY();
+    Balle1.w = Ball1.getRadius();
+    Balle1.h = Ball1.getRadius();
+    SDL_RenderFillRect(renderer, &Balle1);
 
     // Draw the Ball2
     Balle2.x = Ball2.getPosition().getX();
@@ -186,7 +192,7 @@ void sdlJeu::sdlBoucle(Jeu &jeu)
     // tant que ce n'est pas la fin ...
     while (!quit)
     {
-
+        cout << temps() << endl;
         nt = SDL_GetTicks();
         if (nt - t > 1)
         {

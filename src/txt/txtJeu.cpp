@@ -7,6 +7,7 @@
 #include <stdarg.h>
 #include <iostream>
 #include <stdio.h>
+#include <time.h>
 
 #if _WIN32
 #include <windef.h>
@@ -27,6 +28,15 @@ const int TERR_HEIGHT = 30;
 const int PADD_WIDTH = 2;
 const int PADD_HEIGHT = 5;
 const int PADD_SPEED = 1;
+
+
+float temps(clock_t time_start)
+{
+	clock_t t;
+	int f;
+	t = clock()-time_start;
+	return ((float)t)/CLOCKS_PER_SEC*1000;
+}
 
 void txtClear()
 {
@@ -106,7 +116,7 @@ void init(Jeu &jeu)
 	PaddleTwo.setSpeed(PADD_SPEED);
 }
 
-void boucle(Jeu &jeu)
+void boucle(Jeu &jeu, clock_t time_start)
 {
 
 	// Creation d'une nouvelle fenetre en mode texte
@@ -120,7 +130,8 @@ void boucle(Jeu &jeu)
 
 	do
 	{
-		affiche(win, jeu);
+		cout << temps(time_start) << endl;
+		//affiche(win, jeu);
 
 #ifdef _WIN32
 		Sleep(100);

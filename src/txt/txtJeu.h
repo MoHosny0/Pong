@@ -2,6 +2,7 @@
 #define TXT_H
 #include "../core/Terrain.h"
 #include "winTxt.h"
+#include <time.h>
 
 /**
 @brief: Efface le contenu du terminal.
@@ -18,6 +19,6 @@ void affiche(Terrain terrain);
 @brief: Boucle du jeu en mode terminal.
 @param: jeu à boucler.
 */
-void boucle(Jeu &jeu);
+void boucle(Jeu &jeu, clock_t time_start);
 
 #endif
