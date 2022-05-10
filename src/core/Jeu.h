@@ -13,7 +13,7 @@ class Jeu
 {
 private:
     Terrain terrain;
-    Ball ball;
+    Ball ball1, ball2;
     Paddle PlayerOne, PlayerTwo;
     Score PlayerOneScore, PlayerTwoScore;
 
@@ -30,10 +30,16 @@ public:
     Terrain &getTerrain();
 
     /**
-    @brief Renvoie une balle.
-    @return la balle 
+    @brief Renvoie la balle 1.
+    @return la balle 1 
     */
-    Ball &getBall();
+    Ball &getBall1();
+
+    /**
+    @brief Renvoie la balle 2.
+    @return la balle 2 
+    */
+    Ball &getBall2();
 
     /**
     @brief Renvoie le premier Paddle.
@@ -54,10 +60,16 @@ public:
     const Terrain &getConstTerrain() const;
 
     /**
-    @brief Renvoie une balle.
-    @return La balle
-     */
-    const Ball &getConstBall() const;
+    @brief Renvoie la balle 1.
+    @return La balle 1
+    */
+    const Ball &getConstBall1() const;
+    
+    /**
+    @brief Renvoie la balle 2.
+    @return La balle 2
+    */
+    const Ball &getConstBall2() const;
 
     /**
    @brief Renvoie le premier Paddle.

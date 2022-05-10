@@ -3,6 +3,7 @@
 
 int main()
 {
+    srand(time(NULL));
     Jeu jeu;
     txtClear();
     boucle(jeu);

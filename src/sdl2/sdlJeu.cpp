@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include "sdlJeu.h"
-// #include <SDL/SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 using namespace std;
 
 // Dimensions SDL
@@ -24,16 +24,30 @@ float temps()
 void init(Jeu &jeu)
 {
     Terrain &Terrain = jeu.getTerrain();
-    Ball &Ball = jeu.getBall();
+
+    Ball &Ball1 = jeu.getBall1();
+    Ball &Ball2 = jeu.getBall2();
+    
     Paddle &PaddleOne = jeu.getPaddleOne();
     Paddle &PaddleTwo = jeu.getPaddleTwo();
+    
     const Score &ScoreOne = jeu.getConstPlayerOneScore(); // besoin ici?
     const Score &ScoreTwo = jeu.getConstPlayerTwoScore(); // besoin ici?
 
     Terrain.setDimensions(WINDOW_WIDTH, WINDOW_HEIGHT);
     // cout << Terrain.getDimX() << " " << Terrain.getDimY() << endl;
-    Ball.setRadius(BALL_SIZE);
-    Ball.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+    
+    Ball1.setRadius(BALL_SIZE);
+    Ball1.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+    // cout << Ball1.getPosition().getX() << ", " << Ball1.getPosition().getY() << endl;
+    // cout << &Ball1 << endl;
+
+    Ball2.setRadius(BALL_SIZE);
+    Ball2.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+    // cout << Ball2.getPosition().getX() << ", " << Ball2.getPosition().getY() << endl;
+    // cout << &Ball2 << endl;
+
+    
     PaddleOne.setPosition(Vec2D(10, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
     PaddleOne.setDimension(PADDLE_WIDTH, PADDLE_HEIGHT);
     PaddleOne.setSpeed(PADDLE_SPEED);
@@ -100,20 +114,30 @@ void sdlJeu::sdlAff(Jeu &jeu)
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 
-    const Ball &Ball = jeu.getConstBall();
+    const Ball &Ball1 = jeu.getConstBall1();
+    const Ball &Ball2 = jeu.getConstBall2();
+    
     const Paddle &PaddleOne = jeu.getConstPaddleOne();
     const Paddle &PaddleTwo = jeu.getConstPaddleTwo();
+
     const Score &ScoreOne = jeu.getConstPlayerOneScore();
     const Score &ScoreTwo = jeu.getConstPlayerTwoScore();
 
-    SDL_Rect Balle, PlayerOne, PlayerTwo;
+    SDL_Rect Balle1, Balle2, PlayerOne, PlayerTwo;
 
-    // Draw the Ball
-    Balle.x = Ball.getPosition().getX();
-    Balle.y = Ball.getPosition().getY();
-    Balle.w = Ball.getRadius();
-    Balle.h = Ball.getRadius();
-    SDL_RenderFillRect(renderer, &Balle);
+    // Draw the Ball1
+    // Balle1.x = Ball1.getPosition().getX();
+    // Balle1.y = Ball1.getPosition().getY();
+    // Balle1.w = Ball1.getRadius();
+    // Balle1.h = Ball1.getRadius();
+    // SDL_RenderFillRect(renderer, &Balle1);
+
+    // Draw the Ball2
+    Balle2.x = Ball2.getPosition().getX();
+    Balle2.y = Ball2.getPosition().getY();
+    Balle2.w = Ball2.getRadius();
+    Balle2.h = Ball2.getRadius();
+    SDL_RenderFillRect(renderer, &Balle2);
 
     // Draw the Paddles
     PlayerOne.w = PaddleOne.getPosition().width;
@@ -131,21 +155,21 @@ void sdlJeu::sdlAff(Jeu &jeu)
     SDL_RenderFillRect(renderer, &PlayerTwo);
 
     // FONTS
-    font = TTF_OpenFont("../../data/DejaVuSansCondensed.ttf", 50);
-    if (font == NULL)
-        font = TTF_OpenFont("../data/DejaVuSansCondensed.ttf", 50);
-    if (font == NULL)
-        font = TTF_OpenFont("data/DejaVuSansCondensed.ttf", 50);
-    if (font == NULL)
-    {
-        cout << "Failed to load DejaVuSansCondensed.ttf! SDL_TTF Error: " << TTF_GetError() << endl;
-        SDL_Quit();
-        exit(1);
-    }
-    // cout << "APRES FONTS" << endl;
-    font_color.r = 50;
-    font_color.g = 50;
-    font_color.b = 255;
+    // font = TTF_OpenFont("../../data/DejaVuSansCondensed.ttf", 50);
+    // if (font == NULL)
+    //     font = TTF_OpenFont("../data/DejaVuSansCondensed.ttf", 50);
+    // if (font == NULL)
+    //     font = TTF_OpenFont("data/DejaVuSansCondensed.ttf", 50);
+    // if (font == NULL)
+    // {
+    //     cout << "Failed to load DejaVuSansCondensed.ttf! SDL_TTF Error: " << TTF_GetError() << endl;
+    //     SDL_Quit();
+    //     exit(1);
+    // }
+    // // cout << "APRES FONTS" << endl;
+    // font_color.r = 50;
+    // font_color.g = 50;
+    // font_color.b = 255;
 
     // Draw the Score
 }

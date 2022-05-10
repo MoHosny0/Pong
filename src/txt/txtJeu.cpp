@@ -42,9 +42,13 @@ void affiche(WinTXT &win, Jeu &jeu)
 {
 
 	const Terrain &Terrain = jeu.getConstTerrain();
-	const Ball &Ball = jeu.getConstBall();
+
+	const Ball &Ball1 = jeu.getConstBall1();
+	const Ball &Ball2 = jeu.getConstBall2();
+	
 	const Paddle &PaddleOne = jeu.getConstPaddleOne();
 	const Paddle &PaddleTwo = jeu.getConstPaddleTwo();
+	
 	const Score &ScoreOne = jeu.getConstPlayerOneScore();
 	const Score &ScoreTwo = jeu.getConstPlayerTwoScore();
 
@@ -61,7 +65,8 @@ void affiche(WinTXT &win, Jeu &jeu)
 	}
 
 	// Affichage de la balle
-	win.print(Ball.getPosition().getX(), Ball.getPosition().getY(), '@');
+	win.print(Ball1.getPosition().getX(), Ball1.getPosition().getY(), '@');
+	win.print(Ball2.getPosition().getX(), Ball1.getPosition().getY(), '@');
 
 	char CharScoreOne = '0' + ScoreOne.getScore();
 	char CharScoreTwo = '0' + ScoreTwo.getScore();
@@ -79,12 +84,18 @@ void affiche(WinTXT &win, Jeu &jeu)
 void init(Jeu &jeu)
 {
 	Terrain &Terrain = jeu.getTerrain();
-	Ball &Ball = jeu.getBall();
+	
+	Ball &Ball1 = jeu.getBall1();
+	Ball &Ball2 = jeu.getBall1();
+	
 	Paddle &PaddleOne = jeu.getPaddleOne();
 	Paddle &PaddleTwo = jeu.getPaddleTwo();
 
 	Terrain.setDimensions(TERR_WIDTH, TERR_HEIGHT);
-	Ball.setPosition(Vec2D(TERR_WIDTH / 2, TERR_HEIGHT / 2));
+	
+	Ball1.setPosition(Vec2D(TERR_WIDTH / 2, TERR_HEIGHT / 2));
+	Ball2.setPosition(Vec2D(TERR_WIDTH / 2, TERR_HEIGHT / 2));
+	
 	PaddleOne.setPosition(Vec2D(2, (TERR_HEIGHT / 2) - (PADD_HEIGHT / 2)));
 	PaddleOne.setDimension(PADD_WIDTH, PADD_HEIGHT);
 

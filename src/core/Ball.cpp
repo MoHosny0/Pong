@@ -7,7 +7,8 @@ using namespace std;
 
 Ball::Ball()
 {
-    srand(static_cast<unsigned>(time(0)));
+    
+    
 
     float r1; // change name
     float r2; // change name
@@ -28,7 +29,7 @@ Ball::Ball()
     } while (r2 == 0);
 
     velocity = Vec2D(r1, r2);
-    cout << "velocity: " << velocity.getX() << "," << velocity.getY() << endl; // pourquoi ca s'affiche 2 fois dans le terminal??
+    // cout << "velocity: " << velocity.getX() << "," << velocity.getY() << endl; // pourquoi ca s'affiche 2 fois dans le terminal??
 }
 
 const Vec2D &Ball::getPosition() const { return position; }
