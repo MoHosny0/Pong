@@ -3,22 +3,22 @@
 #include <stdlib.h>
 #include <iostream>
 #include "sdlJeu.h"
-#include <SDL2/SDL_ttf.h>
+#include "test.h"
 using namespace std;
 
-// Dimensions SDL
-const int WINDOW_WIDTH = 1200;
-const int WINDOW_HEIGHT = 800;
+// // Dimensions SDL
+// const int WINDOW_WIDTH = 1200;
+// const int WINDOW_HEIGHT = 800;
 
-// Dimensions objets
-const int BALL_SIZE = 8;
-const int PADDLE_WIDTH = 8;
-const int PADDLE_HEIGHT = 81;
-const int PADDLE_SPEED = 3;
+// // Dimensions objets
+// const int BALL_SIZE = 8;
+// const int PADDLE_WIDTH = 8;
+// const int PADDLE_HEIGHT = 81;
+// const int PADDLE_SPEED = 3;
 /**
  * @brief Calcule le nombre de secondes depuis le début du programme.
- * @return seconde
- * 
+ * @return le temps en secondes
+ *
  */
 float temps()
 {
@@ -31,29 +31,28 @@ void init(Jeu &jeu)
     cout << temps() << endl;
     Terrain &Terrain = jeu.getTerrain();
 
-    Ball &Ball1 = jeu.getBall1();
-    Ball &Ball2 = jeu.getBall2();
-    
+    Ball &BallOne = jeu.getBallOne();
+    Ball &BallTwo = jeu.getBallTwo();
+
     Paddle &PaddleOne = jeu.getPaddleOne();
     Paddle &PaddleTwo = jeu.getPaddleTwo();
-    
+
     const Score &ScoreOne = jeu.getConstPlayerOneScore(); // besoin ici?
     const Score &ScoreTwo = jeu.getConstPlayerTwoScore(); // besoin ici?
 
     Terrain.setDimensions(WINDOW_WIDTH, WINDOW_HEIGHT);
     // cout << Terrain.getDimX() << " " << Terrain.getDimY() << endl;
-    
-    Ball1.setRadius(BALL_SIZE);
-    Ball1.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
-    // cout << Ball1.getPosition().getX() << ", " << Ball1.getPosition().getY() << endl;
-    // cout << &Ball1 << endl;
 
-    Ball2.setRadius(BALL_SIZE);
-    Ball2.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
-    // cout << Ball2.getPosition().getX() << ", " << Ball2.getPosition().getY() << endl;
-    // cout << &Ball2 << endl;
+    BallOne.setRadius(BALL_SIZE);
+    BallOne.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+    // cout << BallOne.getPosition().getX() << ", " << BallOne.getPosition().getY() << endl;
+    // cout << &BallOne << endl;
 
-    
+    BallTwo.setRadius(BALL_SIZE);
+    BallTwo.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+    // cout << BallTwo.getPosition().getX() << ", " << BallTwo.getPosition().getY() << endl;
+    // cout << &BallTwo << endl;
+
     PaddleOne.setPosition(Vec2D(10, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
     PaddleOne.setDimension(PADDLE_WIDTH, PADDLE_HEIGHT);
     PaddleOne.setSpeed(PADDLE_SPEED);
@@ -120,9 +119,9 @@ void sdlJeu::sdlAff(Jeu &jeu)
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 
-    const Ball &Ball1 = jeu.getConstBall1();
-    const Ball &Ball2 = jeu.getConstBall2();
-    
+    const Ball &BallOne = jeu.getConstBallOne();
+    const Ball &BallTwo = jeu.getConstBallTwo();
+
     const Paddle &PaddleOne = jeu.getConstPaddleOne();
     const Paddle &PaddleTwo = jeu.getConstPaddleTwo();
 
@@ -131,18 +130,18 @@ void sdlJeu::sdlAff(Jeu &jeu)
 
     SDL_Rect Balle1, Balle2, PlayerOne, PlayerTwo;
 
-    // Draw the Ball1
-    Balle1.x = Ball1.getPosition().getX();
-    Balle1.y = Ball1.getPosition().getY();
-    Balle1.w = Ball1.getRadius();
-    Balle1.h = Ball1.getRadius();
+    // Draw the BallOne
+    Balle1.x = BallOne.getPosition().getX();
+    Balle1.y = BallOne.getPosition().getY();
+    Balle1.w = BallOne.getRadius();
+    Balle1.h = BallOne.getRadius();
     SDL_RenderFillRect(renderer, &Balle1);
 
-    // Draw the Ball2
-    Balle2.x = Ball2.getPosition().getX();
-    Balle2.y = Ball2.getPosition().getY();
-    Balle2.w = Ball2.getRadius();
-    Balle2.h = Ball2.getRadius();
+    // Draw the BallTwo
+    Balle2.x = BallTwo.getPosition().getX();
+    Balle2.y = BallTwo.getPosition().getY();
+    Balle2.w = BallTwo.getRadius();
+    Balle2.h = BallTwo.getRadius();
     SDL_RenderFillRect(renderer, &Balle2);
 
     // Draw the Paddles
@@ -155,7 +154,6 @@ void sdlJeu::sdlAff(Jeu &jeu)
     PlayerTwo.h = PaddleTwo.getPosition().height;
     PlayerTwo.x = PaddleTwo.getPosition().x;
     PlayerTwo.y = PaddleTwo.getPosition().y;
-
 
     SDL_RenderFillRect(renderer, &PlayerOne);
     SDL_RenderFillRect(renderer, &PlayerTwo);
@@ -180,9 +178,11 @@ void sdlJeu::sdlAff(Jeu &jeu)
     // Draw the Score
 }
 
+
 void sdlJeu::sdlBoucle(Jeu &jeu)
 {
     init(jeu);
+    testRegression(jeu);
 
     SDL_Event events;
     bool quit = false;
@@ -192,7 +192,7 @@ void sdlJeu::sdlBoucle(Jeu &jeu)
     // tant que ce n'est pas la fin ...
     while (!quit)
     {
-        cout << temps() << endl;
+        // cout << temps() << endl;
         nt = SDL_GetTicks();
         if (nt - t > 1)
         {

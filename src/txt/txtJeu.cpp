@@ -29,13 +29,12 @@ const int PADD_WIDTH = 2;
 const int PADD_HEIGHT = 5;
 const int PADD_SPEED = 1;
 
-
 float temps(clock_t time_start)
 {
 	clock_t t;
 	int f;
-	t = clock()-time_start;
-	return ((float)t)/CLOCKS_PER_SEC*1000;
+	t = clock() - time_start;
+	return ((float)t) / CLOCKS_PER_SEC * 1000;
 }
 
 void txtClear()
@@ -53,12 +52,12 @@ void affiche(WinTXT &win, Jeu &jeu)
 
 	const Terrain &Terrain = jeu.getConstTerrain();
 
-	const Ball &Ball1 = jeu.getConstBall1();
-	const Ball &Ball2 = jeu.getConstBall2();
-	
+	const Ball &BallOne = jeu.getConstBallOne();
+	const Ball &BallTwo = jeu.getConstBallTwo();
+
 	const Paddle &PaddleOne = jeu.getConstPaddleOne();
 	const Paddle &PaddleTwo = jeu.getConstPaddleTwo();
-	
+
 	const Score &ScoreOne = jeu.getConstPlayerOneScore();
 	const Score &ScoreTwo = jeu.getConstPlayerTwoScore();
 
@@ -75,8 +74,8 @@ void affiche(WinTXT &win, Jeu &jeu)
 	}
 
 	// Affichage de la balle
-	win.print(Ball1.getPosition().getX(), Ball1.getPosition().getY(), '@');
-	win.print(Ball2.getPosition().getX(), Ball1.getPosition().getY(), '@');
+	win.print(BallOne.getPosition().getX(), BallOne.getPosition().getY(), '@');
+	win.print(BallTwo.getPosition().getX(), BallOne.getPosition().getY(), '@');
 
 	char CharScoreOne = '0' + ScoreOne.getScore();
 	char CharScoreTwo = '0' + ScoreTwo.getScore();
@@ -94,18 +93,18 @@ void affiche(WinTXT &win, Jeu &jeu)
 void init(Jeu &jeu)
 {
 	Terrain &Terrain = jeu.getTerrain();
-	
-	Ball &Ball1 = jeu.getBall1();
-	Ball &Ball2 = jeu.getBall1();
-	
+
+	Ball &BallOne = jeu.getBallTwo();
+	Ball &BallTwo = jeu.getBallTwo();
+
 	Paddle &PaddleOne = jeu.getPaddleOne();
 	Paddle &PaddleTwo = jeu.getPaddleTwo();
 
 	Terrain.setDimensions(TERR_WIDTH, TERR_HEIGHT);
-	
-	Ball1.setPosition(Vec2D(TERR_WIDTH / 2, TERR_HEIGHT / 2));
-	Ball2.setPosition(Vec2D(TERR_WIDTH / 2, TERR_HEIGHT / 2));
-	
+
+	BallOne.setPosition(Vec2D(TERR_WIDTH / 2, TERR_HEIGHT / 2));
+	BallTwo.setPosition(Vec2D(TERR_WIDTH / 2, TERR_HEIGHT / 2));
+
 	PaddleOne.setPosition(Vec2D(2, (TERR_HEIGHT / 2) - (PADD_HEIGHT / 2)));
 	PaddleOne.setDimension(PADD_WIDTH, PADD_HEIGHT);
 
@@ -131,7 +130,7 @@ void boucle(Jeu &jeu, clock_t time_start)
 	do
 	{
 		cout << temps(time_start) << endl;
-		//affiche(win, jeu);
+		// affiche(win, jeu);
 
 #ifdef _WIN32
 		Sleep(100);

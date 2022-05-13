@@ -57,7 +57,6 @@ public:
    */
     void bas(const Terrain &T);
 
-
     void setDimension(const int x, const int y);
 
     void setSpeed(const int x);
