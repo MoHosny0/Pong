@@ -1,23 +1,59 @@
-## Règles pour bonne organisaton:
+Nom du projet: Triland
 
-1. Vérifier régulierement que le code s'exécute **(make)**
+Membre du projet :
 
-2. **git pull** toujours avant de modifier.
+    - ALBAGOURY Youssef / p1920140
+    - BERARD Thibault / p2005244 
+    - HOSNY Mostafa / p2018532
+   
 
-3. **git add** [uniquement les fichiers modifiées].
+Url du git:
 
-4. **commit** avec message claire en anglais, par ex:
+  https://forge.univ-lyon1.fr/p1920140/pong
+    
+  Project ID: 23417
 
-- adding Class.cpp/h: après creation d'une classe
+Description brève:
 
-- updating Class.cpp/h: après modification d'une classe
+    ------
 
-## À faire:
+But du jeu:
 
-- affichage du score sur l'écran (en cours)
-- enlever getDimX de **perdu()**, car utilise taille statique ***(fini)***
-- verifier que la balle respawn au milieu du terrain
-- reverifier collisions encore une fois (pourquoi 1 et -1 seulement?)
-- il est ou pong.doxy dans doc/ ?
+    
 
-- mettre en place SDL_ttf 
+Compilation:
+
+    Utiliser la commande "make" dans un terminal ouvert dans le dossier "Pong".
+
+Execution:
+
+    Utiliser la commande "./bin/sdl2" pour lancer la version graphique avec SDL2.
+    Utiliser la commande "./bin/txt" pour lancer la version texte dans le terminal.
+
+Utilisation:
+
+   
+
+Fonctionnalités:
+
+    
+
+
+Organisation de l'archive :
+
+    - Tous les dossiers se trouvent dans le dossier "Pong"
+      avec le Makefile et le ReadMe.
+
+        - Dans le dossier "bin" se trouve l'application "sdl2" et "txt".
+
+        - Dans le dossier "data" comporte deux sous dossier :
+
+            - "images" ou se trouve les images.
+
+            - "polices" ou se trouve les polices.
+
+        - Dans le dossier "doc" se trouve la doxygen.
+
+        - Dans le dossier "obj" comporte les fichiers objets ".o" du projet.
+
+        - Dans le dossier "src" on trouve les fichiers ".cpp" et ".h" du projet.
