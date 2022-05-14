@@ -1,4 +1,4 @@
-Nom du projet: Triland
+Nom du projet: Pong
 
 Membre du projet :
 
