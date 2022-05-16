@@ -41,17 +41,12 @@ void init(Jeu &jeu)
     const Score &ScoreTwo = jeu.getConstPlayerTwoScore(); // besoin ici?
 
     Terrain.setDimensions(WINDOW_WIDTH, WINDOW_HEIGHT);
-    // cout << Terrain.getDimX() << " " << Terrain.getDimY() << endl;
 
     BallOne.setRadius(BALL_SIZE);
     BallOne.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
-    // cout << BallOne.getPosition().getX() << ", " << BallOne.getPosition().getY() << endl;
-    // cout << &BallOne << endl;
 
     BallTwo.setRadius(BALL_SIZE);
     BallTwo.setPosition(Vec2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
-    // cout << BallTwo.getPosition().getX() << ", " << BallTwo.getPosition().getY() << endl;
-    // cout << &BallTwo << endl;
 
     PaddleOne.setPosition(Vec2D(10, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)));
     PaddleOne.setDimension(PADDLE_WIDTH, PADDLE_HEIGHT);
@@ -130,14 +125,14 @@ void sdlJeu::sdlAff(Jeu &jeu)
 
     SDL_Rect Balle1, Balle2, PlayerOne, PlayerTwo;
 
-    // Draw the BallOne
+    // Draw Ball 1
     Balle1.x = BallOne.getPosition().getX();
     Balle1.y = BallOne.getPosition().getY();
     Balle1.w = BallOne.getRadius();
     Balle1.h = BallOne.getRadius();
     SDL_RenderFillRect(renderer, &Balle1);
 
-    // Draw the BallTwo
+    // Draw Ball 2
     Balle2.x = BallTwo.getPosition().getX();
     Balle2.y = BallTwo.getPosition().getY();
     Balle2.w = BallTwo.getRadius();
