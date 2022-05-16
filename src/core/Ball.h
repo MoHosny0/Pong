@@ -4,7 +4,7 @@
 #define BALL_H
 
 /**
-@brief Une balle = sa position, sa vitesse et sa taille.
+@brief La balle du jeu
 */
 class Ball
 {

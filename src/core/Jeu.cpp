@@ -25,7 +25,7 @@ const Paddle &Jeu::getConstPaddleTwo() const { return PlayerTwo; }
 const Score &Jeu::getConstPlayerOneScore() const { return PlayerOneScore; }
 const Score &Jeu::getConstPlayerTwoScore() const { return PlayerTwoScore; }
 
-void Jeu::collisions() // accourcir les nom de variables, lignes trop longues.
+void Jeu::collisions() 
 {
     float ballOneHorizontal = BallOne.getPosition().getX();
     float ballOneVertical = BallOne.getPosition().getY();
@@ -63,12 +63,10 @@ void Jeu::collisions() // accourcir les nom de variables, lignes trop longues.
     if ((ballOneHorizontal > paddleOneHorizontal) && (ballOneHorizontal < (paddleOneHorizontal + paddleOneWidth)) && (ballOneVertical > paddleOneVertical) && (ballOneVertical < (paddleOneVertical + paddleOneHeight)))
     {
         BallOne.setVelocity(Vec2D(-ballOneVectorX, ball1VectorY));
-        // cout << "x = " << paddleOneHorizontal << " y = " << paddleOneVertical << " width = " << paddleOneWidth << " height = " << paddleOneHeight << endl;
     }
 
     if ((ballOneHorizontal > (paddleTwoHorizontal - 1)) && (ballOneHorizontal < (paddleTwoHorizontal + paddleTwoWidth)) && (ballOneVertical > paddleTwoVertical) && (ballOneVertical < (paddleTwoVertical + paddleTwoHeight)))
     {
-        // cout << "x = " << paddleTwoHorizontal << " y = " << paddleTwoVertical << " width = " << paddleTwoWidth << " height = " << paddleTwoHeight << endl;
         BallOne.setVelocity(Vec2D(-ballOneVectorX, ball1VectorY));
     }
 
@@ -83,17 +81,14 @@ void Jeu::collisions() // accourcir les nom de variables, lignes trop longues.
     if ((ballTwoHorizontal > paddleOneHorizontal) && (ballTwoHorizontal < (paddleOneHorizontal + paddleOneWidth)) && (ballTwoVertical > paddleOneVertical) && (ballTwoVertical < (paddleOneVertical + paddleOneHeight)))
     {
         BallTwo.setVelocity(Vec2D(-ballTwoVectorX, ball2VectorY));
-        // cout << "x = " << paddleOneHorizontal << " y = " << paddleOneVertical << " width = " << paddleOneWidth << " height = " << paddleOneHeight << endl;
     }
 
     if ((ballTwoHorizontal > (paddleTwoHorizontal - 1)) && (ballTwoHorizontal < (paddleTwoHorizontal + paddleTwoWidth)) && (ballTwoVertical > paddleTwoVertical) && (ballTwoVertical < (paddleTwoVertical + paddleTwoHeight)))
     {
-        // cout << "x = " << paddleTwoHorizontal << " y = " << paddleTwoVertical << " width = " << paddleTwoWidth << " height = " << paddleTwoHeight << endl;
         BallTwo.setVelocity(Vec2D(-ballTwoVectorX, ball2VectorY));
     }
 }
 
-// fonction too long and repetitive. create function to handle both goal sides
 void Jeu::perdu()
 {
     int WINDOW_WIDTH = terrain.getDimX();
@@ -127,7 +122,6 @@ void Jeu::perdu()
         } while (randTwo == 0);
 
         BallOne.setVelocity(Vec2D(randOne, randTwo));
-        // cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
         PlayerTwoScore.setScore();
     }
 
@@ -150,7 +144,6 @@ void Jeu::perdu()
         } while (randTwo == 0);
 
         BallOne.setVelocity(Vec2D(randOne, randTwo));
-        // cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
         PlayerOneScore.setScore();
     }
 
@@ -174,7 +167,6 @@ void Jeu::perdu()
         } while (randTwo == 0);
 
         BallTwo.setVelocity(Vec2D(randOne, randTwo));
-        // cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
         PlayerTwoScore.setScore();
     }
 
@@ -197,12 +189,10 @@ void Jeu::perdu()
         } while (randTwo == 0);
 
         BallTwo.setVelocity(Vec2D(randOne, randTwo));
-        // cout << "Ball vector set randomly at: Vec2D(" << randOne << "," << randTwo << ")" << endl;
         PlayerOneScore.setScore();
     }
 }
 
-// void Jeu::buts() {} // handle goals and reposition ball
 
 void Jeu::actionsAutomatiques()
 {

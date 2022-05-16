@@ -6,15 +6,6 @@
 #include "test.h"
 using namespace std;
 
-// // Dimensions SDL
-// const int WINDOW_WIDTH = 1200;
-// const int WINDOW_HEIGHT = 800;
-
-// // Dimensions objets
-// const int BALL_SIZE = 8;
-// const int PADDLE_WIDTH = 8;
-// const int PADDLE_HEIGHT = 81;
-// const int PADDLE_SPEED = 3;
 /**
  * @brief Calcule le nombre de secondes depuis le début du programme.
  * @return le temps en secondes
@@ -152,27 +143,7 @@ void sdlJeu::sdlAff(Jeu &jeu)
 
     SDL_RenderFillRect(renderer, &PlayerOne);
     SDL_RenderFillRect(renderer, &PlayerTwo);
-
-    // FONTS
-    // font = TTF_OpenFont("../../data/DejaVuSansCondensed.ttf", 50);
-    // if (font == NULL)
-    //     font = TTF_OpenFont("../data/DejaVuSansCondensed.ttf", 50);
-    // if (font == NULL)
-    //     font = TTF_OpenFont("data/DejaVuSansCondensed.ttf", 50);
-    // if (font == NULL)
-    // {
-    //     cout << "Failed to load DejaVuSansCondensed.ttf! SDL_TTF Error: " << TTF_GetError() << endl;
-    //     SDL_Quit();
-    //     exit(1);
-    // }
-    // // cout << "APRES FONTS" << endl;
-    // font_color.r = 50;
-    // font_color.g = 50;
-    // font_color.b = 255;
-
-    // Draw the Score
 }
-
 
 void sdlJeu::sdlBoucle(Jeu &jeu)
 {
@@ -184,10 +155,8 @@ void sdlJeu::sdlBoucle(Jeu &jeu)
 
     Uint32 t = SDL_GetTicks(), nt;
 
-    // tant que ce n'est pas la fin ...
     while (!quit)
     {
-        // cout << temps() << endl;
         nt = SDL_GetTicks();
         if (nt - t > 1)
         {
@@ -195,11 +164,10 @@ void sdlJeu::sdlBoucle(Jeu &jeu)
             t = nt;
         }
 
-        // tant qu'il y a des evenements à traiter (cette boucle n'est pas bloquante)
         while (SDL_PollEvent(&events))
         {
             if (events.type == SDL_QUIT)
-                quit = true; // Si l'utilisateur a clique sur la croix de fermeture
+                quit = true;
             else if (events.type == SDL_KEYDOWN)
             {
                 if (events.key.keysym.sym == SDLK_ESCAPE)
@@ -225,10 +193,7 @@ void sdlJeu::sdlBoucle(Jeu &jeu)
                 }
             }
         }
-        // on affiche le jeu sur le buffer cache
         sdlAff(jeu);
-
-        // on permute les deux buffers (une seule fois dans la boucle)
         SDL_RenderPresent(renderer);
     }
 }

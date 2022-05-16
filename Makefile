@@ -54,7 +54,7 @@ obj/txt/%.o: src/txt/%.cpp
 	${GPP_O} -o $@ $< 
 
 
-doc: doc/pong.doxy
+docu: doc/pong.doxy
 	doxygen doc/pong.doxy
 
 clean:
