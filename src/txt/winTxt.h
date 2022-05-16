@@ -29,6 +29,15 @@ public:
     void print(int x, int y, char c);
 
     /**
+     * @brief met les char du score du player en bas du terrain
+     * 
+     * @param player le joueur
+     * @param score le score du joueur
+     * @param dimy dimension y du tableau de charactère
+     */
+    void printScore(int player, Score score, int dimy);
+
+    /**
     @brief Met le char du paddle au coordonées données dans le tableau de charactère.
     */
     void printPaddle(int x1, int y1, int width, int height, char c);

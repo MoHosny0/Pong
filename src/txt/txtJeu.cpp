@@ -52,8 +52,13 @@ void affiche(WinTXT &win, Jeu &jeu)
 
 	const Terrain &Terrain = jeu.getConstTerrain();
 
-	const Ball &BallOne = jeu.getConstBallOne();
-	const Ball &BallTwo = jeu.getConstBallTwo();
+//TODO : test à supprimer
+	// const Ball &BallOne = jeu.getConstBallOne();
+	// const Ball &BallTwo = jeu.getConstBallTwo();
+
+	Ball &BallOne = jeu.getBallOne();
+	Ball &BallTwo = jeu.getBallTwo();
+
 
 	const Paddle &PaddleOne = jeu.getConstPaddleOne();
 	const Paddle &PaddleTwo = jeu.getConstPaddleTwo();
@@ -75,13 +80,24 @@ void affiche(WinTXT &win, Jeu &jeu)
 
 	// Affichage de la balle
 	win.print(BallOne.getPosition().getX(), BallOne.getPosition().getY(), '@');
-	win.print(BallTwo.getPosition().getX(), BallOne.getPosition().getY(), '@');
+	win.print(BallTwo.getPosition().getX(), BallTwo.getPosition().getY(), '@');
 
-	char CharScoreOne = '0' + ScoreOne.getScore();
-	char CharScoreTwo = '0' + ScoreTwo.getScore();
+	// cout << "x1 = " << BallOne.getPosition().getX() << " ,y1 = " << BallOne.getPosition().getY() << endl;
+	// cout << "x2 = " << BallTwo.getPosition().getX() << " ,y2 = " << BallTwo.getPosition().getY() << endl;
 
-	win.print(0, 0, CharScoreOne);
-	win.print(1, 0, CharScoreTwo);
+
+	// char CharScoreOne = '0' + ScoreOne.getScore();
+	// char CharScoreTwo = '0' + ScoreTwo.getScore();
+// 
+	// cout << CharScoreOne << " " << CharScoreTwo << endl;
+	// cout << dimx <<
+
+	win.printScore(1, ScoreOne, dimy);
+	win.printScore(2, ScoreTwo, dimy);
+
+
+	// win.print(10, dimy, CharScoreOne);
+	// win.print(1, dimy+1	, CharScoreTwo);
 
 	// Affichage des paddles
 	win.printPaddle(PaddleOne.getPosition().x, PaddleOne.getPosition().y, PaddleOne.getPosition().width, PaddleOne.getPosition().height, '#');
@@ -94,16 +110,30 @@ void init(Jeu &jeu)
 {
 	Terrain &Terrain = jeu.getTerrain();
 
-	Ball &BallOne = jeu.getBallTwo();
+	Ball &BallOne = jeu.getBallOne();
 	Ball &BallTwo = jeu.getBallTwo();
 
 	Paddle &PaddleOne = jeu.getPaddleOne();
 	Paddle &PaddleTwo = jeu.getPaddleTwo();
 
+	//TODO : test à supprimer
+    // cout << "INIT :" << endl;
+	// cout << "x1 = " << BallOne.getPosition().getX() << " ,y1 = " << BallOne.getPosition().getY() << endl;
+	// cout << "x2 = " << BallTwo.getPosition().getX() << " ,y2 = " << BallTwo.getPosition().getY() << endl;
+	// cout << endl;
+
+
 	Terrain.setDimensions(TERR_WIDTH, TERR_HEIGHT);
 
 	BallOne.setPosition(Vec2D(TERR_WIDTH / 2, TERR_HEIGHT / 2));
 	BallTwo.setPosition(Vec2D(TERR_WIDTH / 2, TERR_HEIGHT / 2));
+	
+	//TODO : test à supprimer
+	// cout << "AFTER INIT :" << endl;
+	// cout << "x1 = " << BallOne.getPosition().getX() << " ,y1 = " << BallOne.getPosition().getY() << endl;
+	// cout << "x2 = " << BallTwo.getPosition().getX() << " ,y2 = " << BallTwo.getPosition().getY() << endl;
+	// cout << endl;
+
 
 	PaddleOne.setPosition(Vec2D(2, (TERR_HEIGHT / 2) - (PADD_HEIGHT / 2)));
 	PaddleOne.setDimension(PADD_WIDTH, PADD_HEIGHT);
@@ -113,6 +143,11 @@ void init(Jeu &jeu)
 
 	PaddleOne.setSpeed(PADD_SPEED);
 	PaddleTwo.setSpeed(PADD_SPEED);
+
+//TODO : test à supprimer
+	    // cout << "END INIT  : ";
+	// cout << "x = " << BallOne.getPosition().getX() << " ,y = " << BallOne.getPosition().getY() << endl;
+
 }
 
 void boucle(Jeu &jeu, clock_t time_start)
@@ -124,19 +159,51 @@ void boucle(Jeu &jeu, clock_t time_start)
 
 	init(jeu);
 
+//TODO : test à supprimer
+	// Ball &BallOne = jeu.getBallTwo();
+	
+
+	// cout << "POST INIT  : ";
+	// cout << "x = " << BallOne.getPosition().getX() << " ,y = " << BallOne.getPosition().getY() << endl;
+
+
 	bool ok = true;
 	int c;
 
 	do
 	{
-		cout << temps(time_start) << endl;
-		// affiche(win, jeu);
+		// cout << temps(time_start) << endl;
 
-#ifdef _WIN32
-		Sleep(100);
-#else
-		usleep(100000);
-#endif // WIN32
+//TODO : test à supprimer
+			// Ball &BallOne = jeu.getBallTwo();
+
+		// cout << "x = " << BallOne.getPosition().getX() << " ,y = " << BallOne.getPosition().getY() << endl;
+
+
+			// const Score &ScoreOne = jeu.getConstPlayerOneScore();
+	// const Score &ScoreTwo = jeu.getConstPlayerTwoScore();
+	// char CharScoreOne = '0' + ScoreOne.getScore();
+	// char CharScoreTwo = '0' + ScoreTwo.getScore();
+
+	// cout << CharScoreOne << " " << CharScoreTwo << endl;
+
+		affiche(win, jeu);
+
+	#ifdef _WIN32
+			Sleep(100);
+	#else
+			usleep(100000);
+	#endif // WIN32
+	//TODO : test à supprimer
+			// cout << "PRE AUTO : ";
+			// cout << "x = " << BallOne.getPosition().getX() << " ,y = " << BallOne.getPosition().getY() << endl;
+			// Ball &BallOne = jeu.getBallOne();
+			// Ball &BallTwo = jeu.getBallTwo();
+			// cout << "PRE AUTO :" << endl;
+	// cout << "x1 = " << BallOne.getPosition().getX() << " ,y1 = " << BallOne.getPosition().getY() << endl;
+	// cout << "x2 = " << BallTwo.getPosition().getX() << " ,y2 = " << BallTwo.getPosition().getY() << endl;
+	// cout << endl;
+
 
 		jeu.actionsAutomatiques();
 
@@ -156,6 +223,8 @@ void boucle(Jeu &jeu, clock_t time_start)
 			jeu.actionClavier('l');
 			break;
 		case 'w':
+			//free(&win);
+			// delete &win;
 			ok = false;
 			break;
 		}

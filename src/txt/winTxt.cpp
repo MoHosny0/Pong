@@ -79,7 +79,7 @@ void termInit() // configure la saisie : ne pas afficher les caracteres tapes
 WinTXT::WinTXT(int dx, int dy)
 {
     dimx = dx;
-    dimy = dy;
+    dimy = dy + 2 ;
     win = new char[dimx * dimy];
     clear();
     termInit();
@@ -90,6 +90,23 @@ void WinTXT::clear(char c)
     for (int i = 0; i < dimx; ++i)
         for (int j = 0; j < dimy; ++j)
             print(i, j, c);
+}
+
+void WinTXT::printScore(int player, Score score, int dimy)
+{
+    if (player==2) dimy+=1;
+
+    print(0, dimy, 'P');
+	print(1, dimy, 'l');
+	print(2, dimy, 'a');
+	print(3, dimy, 'y');
+	print(4, dimy, 'e');
+	print(5, dimy, 'r');
+	print(6, dimy, '0' + player);
+
+    print(8, dimy, '0'+score.getScore() );
+
+    
 }
 
 void WinTXT::print(int x, int y, char c)
