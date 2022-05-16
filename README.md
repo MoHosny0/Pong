@@ -15,15 +15,18 @@ Url du git:
 
 Description brève:
 
-    ------
+    Ceci est un jeu dénommé Pong. Il est composé de deux raquette ou paddle ou d'une ou plusieurs balles, tout àa sur un terrain.
 
 But du jeu:
-
+    Le but du jeu pour chacun des deux joueurs est de faire en sorte que l'adversaire ne rattrappe pas la balle. Si la balle atteint la bordure du
+    terrain derrière ça raquette, il a alors perdu et son adversaire gagne un point.
     
 
 Compilation:
 
-    Utiliser la commande "make" dans un terminal ouvert dans le dossier "Pong".
+    Utiliser la commande "make" dans un terminal ouvert dans le dossier "Pong" pour compiler le jeu.
+    Utiliser la commande "make docu" dans un terminal ouvert dans le dossier "Pong" pour pour générer la documentation doxygen.
+
 
 Execution:
 
