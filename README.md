@@ -15,7 +15,20 @@ Url du git:
 
 Description brève:
 
-    Ceci est un jeu dénommé Pong. Il est composé de deux raquette ou paddle ou d'une ou plusieurs balles, tout àa sur un terrain.
+     Au début de la partie, il y a une balle qui apparait au centre de la
+    fenêtre et se dirige vers l'un des cotés.
+
+    Les joueurs doivent déplacer les raquettes de haut en bas avec les touches afin de
+    taper la balle et changer sa direction de façon à la garder dans le
+    terrain.
+
+    Si la balle frappe le haut ou le bas du terrain elle se reflète, elle
+    change de direction (Exemple : si la balle frappe le haut du terrain et
+    venant de la droite, sa direction se change vers le bas et à gauche et
+    vice versa).
+
+    Pour gagner un point il faut que la balle dépasse la raquette de
+    l’adversaire et passe à travers son coté. 
 
 But du jeu:
     Le but du jeu pour chacun des deux joueurs est de faire en sorte que l'adversaire ne rattrappe pas la balle. Si la balle atteint la bordure du
@@ -35,11 +48,17 @@ Execution:
 
 Utilisation:
 
-   
+   - Le joueur de droite appuit sur la touche"A" pour se déplacer vers le haut et la touche "Q" pour se déplacer vers le bas.
+   - Le joueur de gauche appuit sur la touche"P" pour se déplacer vers le haut et la touche "L" pour se déplacer vers le bas.
+   - "W" pour quitter le jeu
+
 
 Fonctionnalités:
 
-    
+    -chanque joueur déplace une raquette horizontalement.
+    -La balle se déplace automatiquement aves des vitesses différentes aléatoires.
+    -le score se modifie dans le mode texte aprés chaque point.
+    -la partie recommence aprés atteindre 10 points et le score se met à 0 dans le mode texte.
 
 
 Organisation de l'archive :
@@ -49,12 +68,8 @@ Organisation de l'archive :
 
         - Dans le dossier "bin" se trouve l'application "sdl2" et "txt".
 
-        - Dans le dossier "data" comporte deux sous dossier :
-
-            - "images" ou se trouve les images.
-
-            - "polices" ou se trouve les polices.
-
+        - Dans le dossier "data" se trouve les sprites du jeu.
+        
         - Dans le dossier "doc" se trouve la doxygen.
 
         - Dans le dossier "obj" comporte les fichiers objets ".o" du projet.
