@@ -48,8 +48,8 @@ Execution:
 
 Utilisation:
 
-   - Le joueur de droite appuit sur la touche"A" pour se déplacer vers le haut et la touche "Q" pour se déplacer vers le bas.
-   - Le joueur de gauche appuit sur la touche"P" pour se déplacer vers le haut et la touche "L" pour se déplacer vers le bas.
+   - Le joueur de droite appuit sur la touche "Q" pour se déplacer vers le haut et la touche "A" pour se déplacer vers le bas.
+   - Le joueur de gauche appuit sur la touche "P" pour se déplacer vers le haut et la touche "L" pour se déplacer vers le bas.
    - "W" pour quitter le jeu
 
 
